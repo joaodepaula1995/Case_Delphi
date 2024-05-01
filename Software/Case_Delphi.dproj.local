@@ -2,8 +2,11 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2024/05/01 10:12:48.000.910,=C:\Delphi\Unit1.pas</Transaction>
-    <Transaction>2024/05/01 10:15:25.000.747,C:\Delphi\Unit1.dfm=C:\case_delphi\Software\unitLogin.dfm</Transaction>
-    <Transaction>2024/05/01 10:15:25.000.747,C:\Delphi\Unit1.pas=C:\case_delphi\Software\unitLogin.pas</Transaction>
-    <Transaction>2024/05/01 10:32:41.000.299,C:\Delphi\Project1.dproj=C:\case_delphi\Software\Case_Delphi.dproj</Transaction>
+    <Transaction>2024/05/01 10:15:25.000.747,C:\case_delphi\Software\unitLogin.pas=C:\Delphi\Unit1.pas</Transaction>
+    <Transaction>2024/05/01 10:15:25.000.747,C:\case_delphi\Software\unitLogin.dfm=C:\Delphi\Unit1.dfm</Transaction>
+    <Transaction>2024/05/01 10:32:41.000.299,C:\case_delphi\Software\Case_Delphi.dproj=C:\Delphi\Project1.dproj</Transaction>
+    <Transaction>2024/05/01 12:18:22.218,=C:\case_delphi\Software\Unit1.pas</Transaction>
+    <Transaction>2024/05/01 12:20:56.293,C:\Case_Delphi\Software\unit_Fecha_Sistema.dfm=C:\case_delphi\Software\Unit1.dfm</Transaction>
+    <Transaction>2024/05/01 12:20:56.293,C:\Case_Delphi\Software\unit_Fecha_Sistema.pas=C:\case_delphi\Software\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

@@ -2,8 +2,7 @@ program Case_Delphi;
 
 uses
   Vcl.Forms,
-  unitLogin in 'unitLogin.pas' {FRM_LOGIN},
-  unit_Fecha_Sistema in 'unit_Fecha_Sistema.pas' {FRM_FECHA_SISTEMA};
+  unitLogin in 'unitLogin.pas' {FRM_LOGIN};
 
 {$R *.res}
 
@@ -11,6 +10,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFRM_LOGIN, FRM_LOGIN);
-  Application.CreateForm(TFRM_FECHA_SISTEMA, FRM_FECHA_SISTEMA);
   Application.Run;
 end.

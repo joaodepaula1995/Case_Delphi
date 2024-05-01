@@ -1,16 +1,13 @@
-unit unitLogin;
+unit unit_Fecha_Sistema;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
 
 type
-  TFRM_LOGIN = class(TForm)
-    pn_wallpaper_direita: TPanel;
-    pn_wallpaper_esquerda: TPanel;
-    Label1: TLabel;
+  TFRM_FECHA_SISTEMA = class(TForm)
   private
     { Private declarations }
   public
@@ -18,7 +15,7 @@ type
   end;
 
 var
-  FRM_LOGIN: TFRM_LOGIN;
+  FRM_FECHA_SISTEMA: TFRM_FECHA_SISTEMA;
 
 implementation
 

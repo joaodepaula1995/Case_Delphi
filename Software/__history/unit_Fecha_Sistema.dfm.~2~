@@ -1,0 +1,51 @@
+object FRM_FECHA_SISTEMA: TFRM_FECHA_SISTEMA
+  Left = 0
+  Top = 0
+  BorderIcons = []
+  Caption = 'Aten'#231#227'o!'
+  ClientHeight = 160
+  ClientWidth = 490
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poScreenCenter
+  Scaled = False
+  TextHeight = 15
+  object lbl_mensagem: TLabel
+    Left = 175
+    Top = 52
+    Width = 133
+    Height = 27
+    Alignment = taCenter
+    Caption = 'lbl_mensagem'
+    Color = 7949879
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Microsoft New Tai Lue'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object btn_sim: TButton
+    Left = 167
+    Top = 83
+    Width = 75
+    Height = 25
+    Caption = 'Sim'
+    TabOrder = 0
+    OnClick = btn_simClick
+  end
+  object btn_nao: TButton
+    Left = 248
+    Top = 83
+    Width = 75
+    Height = 25
+    Caption = 'N'#227'o'
+    TabOrder = 1
+    OnClick = btn_naoClick
+  end
+end

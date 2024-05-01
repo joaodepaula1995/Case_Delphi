@@ -32,19 +32,14 @@ var
 
 implementation
 
-uses
-  unit_Fecha_Sistema;
-
 {$R *.dfm}
 
 procedure TFRM_LOGIN.btn_sairClick(Sender: TObject);
 begin
-  try
-    FRM_FECHA_SISTEMA.lbl_mensagem.Caption := 'Deseja realmente sair do sistema?';
-    FRM_FECHA_SISTEMA.ShowModal;
-  finally
-
+  if MessageDlg('Deseja realmente sair do sistema?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    Application.Terminate;
   end;
-
 end;
+
 end.
