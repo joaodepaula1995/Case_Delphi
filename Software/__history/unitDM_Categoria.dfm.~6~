@@ -32,14 +32,4 @@ object DM_Categoria: TDM_Categoria
     Left = 104
     Top = 80
   end
-  object pesquisar_categoria: TFDQuery
-    Connection = conexao
-    Left = 56
-    Top = 144
-  end
-  object ds_pesquisar_categoria: TDataSource
-    DataSet = pesquisar_categoria
-    Left = 184
-    Top = 144
-  end
 end

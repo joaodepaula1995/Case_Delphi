@@ -52,7 +52,7 @@ begin
     else
     begin
       try
-        FRM_MENSAGEM_CONFIRMACAO.lbl_mensagem.Caption := 'Deseja realmente deletar a categoria?'
+        FRM_MENSAGEM_CONFIRMACAO.lbl_mensagem.Caption := 'Deseja realmente deletar a categoria?';
         FRM_MENSAGEM_CONFIRMACAO.ShowModal;
       finally
         if FRM_MENSAGEM_CONFIRMACAO.CONFIRMACAO = 'S' then

@@ -16,8 +16,6 @@ type
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
     categoria: TFDTable;
     ds_categoria: TDataSource;
-    pesquisar_categoria: TFDQuery;
-    ds_pesquisar_categoria: TDataSource;
   private
     { Private declarations }
   public

@@ -114,10 +114,6 @@
             <Form>FRM_FECHA_SISTEMA</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="unit_Mensagem.pas">
-            <Form>FRM_MENSAGEM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="unitDM_Login.pas">
             <Form>DM_Login</Form>
             <FormType>dfm</FormType>
@@ -126,6 +122,27 @@
         <DCCReference Include="unitSQL_Login.pas"/>
         <DCCReference Include="unit_Menu_Principal.pas">
             <Form>FRM_MENU_PRINCIPAL</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unitDM_Categoria.pas">
+            <Form>DM_Categoria</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="unit_Categoria.pas">
+            <Form>FRM_CATEGORIA</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unit_Mensagem.pas">
+            <Form>FRM_MENSAGEM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unit_Mensagem_Confirmacao.pas">
+            <Form>FRM_MENSAGEM_CONFIRMACAO</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unit_Pesquisar.pas">
+            <Form>FRM_PESQUISAR</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

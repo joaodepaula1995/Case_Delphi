@@ -496,6 +496,7 @@ object FRM_CATEGORIA: TFRM_CATEGORIA
         1111111111111111111111111111111111111111111111111111111111111111
         11111111111111085573}
       TabOrder = 2
+      OnClick = btn_pesquisarClick
     end
     object btn_deletar: TBitBtn
       Left = 333

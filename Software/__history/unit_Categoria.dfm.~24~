@@ -637,29 +637,32 @@ object FRM_CATEGORIA: TFRM_CATEGORIA
         1111111111111111111111111111111111111111111111111111111111111111
         11111111111111085573}
       TabOrder = 3
+      OnClick = btn_deletarClick
     end
-    object txt_codcateg: TEdit
-      Left = 15
+    object txt_descricaocateg: TDBEdit
+      Left = 86
       Top = 132
-      Width = 65
+      Width = 349
       Height = 33
       CharCase = ecUpperCase
-      Enabled = False
-      Font.Charset = ANSI_CHARSET
+      DataField = 'descricaocateg'
+      DataSource = DM_Categoria.ds_categoria
+      Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
       Font.Name = 'Microsoft New Tai Lue'
       Font.Style = []
       ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
       TabOrder = 4
     end
-    object DBEdit1: TDBEdit
-      Left = 86
+    object txt_codcateg: TDBEdit
+      Left = 15
       Top = 132
-      Width = 349
+      Width = 65
       Height = 33
+      DataField = 'codcateg'
+      DataSource = DM_Categoria.ds_categoria
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19

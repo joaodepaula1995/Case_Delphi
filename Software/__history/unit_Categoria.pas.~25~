@@ -25,6 +25,7 @@ type
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_deletarClick(Sender: TObject);
+    procedure btn_pesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,7 +38,7 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem;
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unit_Pesquisar;
 
 {$R *.dfm}
 
@@ -51,11 +52,20 @@ begin
     end
     else
     begin
-      DM_Categoria.categoria.Delete;
-      FRM_MENSAGEM.lbl_mensagem.Caption := 'Categoria deletada com sucesso!';
-      FRM_MENSAGEM.ShowModal;
-      DM_Categoria.categoria.Append;
-      txt_descricaocateg.SetFocus;
+      try
+        FRM_MENSAGEM_CONFIRMACAO.lbl_mensagem.Caption := 'Deseja realmente deletar a categoria?';
+        FRM_MENSAGEM_CONFIRMACAO.ShowModal;
+      finally
+        if FRM_MENSAGEM_CONFIRMACAO.CONFIRMACAO = 'S' then
+        begin
+          DM_Categoria.categoria.Delete;
+          FRM_MENSAGEM.lbl_mensagem.Caption := 'Categoria deletada com sucesso!';
+          FRM_MENSAGEM.ShowModal;
+          DM_Categoria.categoria.Append;
+          txt_descricaocateg.SetFocus;
+        end;
+      end;
+
     end;
 end;
 
@@ -65,6 +75,12 @@ begin
 
   else
   DM_Categoria.categoria.Append;
+end;
+
+procedure TFRM_CATEGORIA.btn_pesquisarClick(Sender: TObject);
+begin
+  FRM_PESQUISAR.lbl_pesquisar.Caption := 'Pesquisar Categoria';
+  FRM_PESQUISAR.ShowModal;
 end;
 
 procedure TFRM_CATEGORIA.btn_salvarClick(Sender: TObject);
@@ -92,7 +108,6 @@ begin
       txt_descricaocateg.SetFocus;
     end;
 
-
 end;
 
 procedure TFRM_CATEGORIA.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -109,7 +124,7 @@ end;
 procedure TFRM_CATEGORIA.txt_descricaocategKeyPress(Sender: TObject;
   var Key: Char);
 begin
-    if Key = #13 then
+  if Key = #13 then
   begin
     btn_salvar.SetFocus;
     Key := #0;

@@ -1,0 +1,33 @@
+unit unit_Pesquisar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.WinXCalendars, Vcl.Mask, Vcl.DBCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFRM_PESQUISAR = class(TForm)
+    pn_wallpaper: TPanel;
+    lbl_pesquisar: TLabel;
+    txt_pesquisar: TEdit;
+    dbg_pesquisar: TDBGrid;
+    btn_pesquisar: TBitBtn;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_PESQUISAR: TFRM_PESQUISAR;
+
+implementation
+
+uses
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao;
+
+{$R *.dfm}
+
+end.

@@ -24,6 +24,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
+    procedure btn_deletarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,9 +37,36 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem;
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unit_Pesquisar;
 
 {$R *.dfm}
+
+procedure TFRM_CATEGORIA.btn_deletarClick(Sender: TObject);
+begin
+  if txt_codcateg.Text <= '0' then
+    begin
+      FRM_MENSAGEM.lbl_mensagem.Caption := 'Localize a Categoria para deletar!';
+      FRM_MENSAGEM.ShowModal;
+      btn_pesquisar.SetFocus;
+    end
+    else
+    begin
+      try
+        FRM_MENSAGEM_CONFIRMACAO.lbl_mensagem.Caption := 'Deseja realmente deletar a categoria?';
+        FRM_MENSAGEM_CONFIRMACAO.ShowModal;
+      finally
+        if FRM_MENSAGEM_CONFIRMACAO.CONFIRMACAO = 'S' then
+        begin
+          DM_Categoria.categoria.Delete;
+          FRM_MENSAGEM.lbl_mensagem.Caption := 'Categoria deletada com sucesso!';
+          FRM_MENSAGEM.ShowModal;
+          DM_Categoria.categoria.Append;
+          txt_descricaocateg.SetFocus;
+        end;
+      end;
+
+    end;
+end;
 
 procedure TFRM_CATEGORIA.btn_novoClick(Sender: TObject);
 begin
@@ -60,7 +88,7 @@ begin
     if txt_codcateg.Text <= '0' then
     begin
       DM_Categoria.categoria.Post;
-      FRM_MENSAGEM.lbl_mensagem.Caption := 'Categoria, salva com sucesso!';
+      FRM_MENSAGEM.lbl_mensagem.Caption := 'Categoria salva com sucesso!';
       FRM_MENSAGEM.ShowModal;
       txt_descricaocateg.SetFocus;
     end
@@ -72,7 +100,6 @@ begin
       DM_Categoria.categoria.Post;
       txt_descricaocateg.SetFocus;
     end;
-
 
 end;
 

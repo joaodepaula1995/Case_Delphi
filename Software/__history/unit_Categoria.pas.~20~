@@ -25,7 +25,6 @@ type
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_deletarClick(Sender: TObject);
-    procedure btn_pesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,21 +76,6 @@ begin
   DM_Categoria.categoria.Append;
 end;
 
-procedure TFRM_CATEGORIA.btn_pesquisarClick(Sender: TObject);
-begin
-  DM_Categoria.categoria.Cancel;
-  FRM_PESQUISAR.lbl_pesquisar.Caption := 'Pesquisar Categoria';
-  DM_Categoria.pesquisar_categoria.Close;
-  DM_Categoria.pesquisar_categoria.SQL.Clear;
-  DM_Categoria.pesquisar_categoria.SQL.Add( 'SELECT '
-                                          + 'codcateg AS Código, '
-                                          + 'descricaocateg AS Descrição '
-                                          + 'FROM categoria c '
-                                          + 'WHERE c.descricaocateg LIKE :Pesquisa_Categoria '
-                                          + 'ORDER BY c.descricaocateg;');
-  FRM_PESQUISAR.ShowModal;
-end;
-
 procedure TFRM_CATEGORIA.btn_salvarClick(Sender: TObject);
 begin
   if txt_descricaocateg.Text = '' then
@@ -107,7 +91,6 @@ begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Categoria salva com sucesso!';
       FRM_MENSAGEM.ShowModal;
       txt_descricaocateg.SetFocus;
-      DM_Categoria.categoria.Append;
     end
     else
     begin
@@ -116,8 +99,8 @@ begin
       FRM_MENSAGEM.ShowModal;
       DM_Categoria.categoria.Post;
       txt_descricaocateg.SetFocus;
-      DM_Categoria.categoria.Append;
     end;
+
 
 end;
 
@@ -135,7 +118,7 @@ end;
 procedure TFRM_CATEGORIA.txt_descricaocategKeyPress(Sender: TObject;
   var Key: Char);
 begin
-  if Key = #13 then
+    if Key = #13 then
   begin
     btn_salvar.SetFocus;
     Key := #0;

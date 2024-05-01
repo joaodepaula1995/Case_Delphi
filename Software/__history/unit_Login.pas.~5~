@@ -117,7 +117,6 @@ begin
   if Key = #13 then
   begin
     btn_entrar.SetFocus;
-    btn_entrar.Click;
     Key := #0;
   end;
 end;
