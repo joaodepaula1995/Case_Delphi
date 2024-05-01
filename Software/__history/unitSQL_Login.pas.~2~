@@ -1,0 +1,17 @@
+unit unitSQL_Login;
+
+interface
+
+implementation
+
+uses
+  unitDM_Login;
+
+var
+  SQL_LOGIN: String;
+
+  begin
+  SQL_LOGIN :=  'SELECT u.senhauser AS SENHA '
+              + 'FROM usuario u '
+              + 'WHERE u.nomeuser = :NOMEUSER;';
+end.
