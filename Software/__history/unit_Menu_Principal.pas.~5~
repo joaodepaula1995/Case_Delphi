@@ -4,8 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.WinXCalendars;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
   TFRM_MENU_PRINCIPAL = class(TForm)
@@ -15,17 +14,9 @@ type
     tmr_hora: TTimer;
     lbl_hora: TLabel;
     lbl_dia_semana: TLabel;
-    btn_categorias: TImage;
-    btn_produtos: TImage;
-    btn_usuario: TImage;
-    btn_relatorio: TImage;
-    btn_alteracao_produtos: TImage;
-    CalendarView: TCalendarView;
-    btn_sair_menu: TImage;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure tmr_horaTimer(Sender: TObject);
-    procedure btn_sair_menuClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,14 +32,6 @@ uses
   unit_Fecha_Sistema;
 
 {$R *.dfm}
-
-procedure TFRM_MENU_PRINCIPAL.btn_sair_menuClick(Sender: TObject);
-  var CanClose: Boolean;
-begin
-    FRM_FECHA_SISTEMA.lbl_mensagem.Caption := 'Deseja realmente sair do sistema?';
-  if FRM_FECHA_SISTEMA.ShowModal = mrCancel then
-    CanClose := false;
-end;
 
 procedure TFRM_MENU_PRINCIPAL.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);

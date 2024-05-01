@@ -12,7 +12,7 @@ type
     pn_wallpaper_esquerda: TPanel;
     lbl_bem_vindo: TLabel;
     lbl_usuario: TLabel;
-    lbl_usuario_logado: TLabel;
+    lbl_senha: TLabel;
     txt_nomeuser: TEdit;
     txt_senhauser: TEdit;
     lbl_esqueceu_senha: TLabel;
@@ -83,7 +83,6 @@ begin
     if (txt_senhauser.Text = senhauser) then
       begin
         Self.Hide;
-        FRM_MENU_PRINCIPAL.lbl_usuario_logado.Caption := 'Usuário: ' + txt_nomeuser.Text;
         FRM_MENU_PRINCIPAL.ShowModal;
         Exit;
       end;

@@ -106,12 +106,26 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="unitLogin.pas">
+        <DCCReference Include="unit_Login.pas">
             <Form>FRM_LOGIN</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="unit_Fecha_Sistema.pas">
             <Form>FRM_FECHA_SISTEMA</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unit_Mensagem.pas">
+            <Form>FRM_MENSAGEM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unitDM_Login.pas">
+            <Form>DM_Login</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="unitSQL_Login.pas"/>
+        <DCCReference Include="unit_Menu_Principal.pas">
+            <Form>FRM_MENU_PRINCIPAL</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

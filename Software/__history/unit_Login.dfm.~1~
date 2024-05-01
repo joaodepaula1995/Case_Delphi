@@ -2803,7 +2803,7 @@ object FRM_LOGIN: TFRM_LOGIN
       ParentColor = False
       ParentFont = False
     end
-    object lbl_usuario_logado: TLabel
+    object lbl_senha: TLabel
       Left = 83
       Top = 205
       Width = 78
@@ -3029,7 +3029,7 @@ object FRM_LOGIN: TFRM_LOGIN
       OnKeyPress = txt_senhauserKeyPress
     end
     object btn_entrar: TBitBtn
-      Left = 302
+      Left = 304
       Top = 301
       Width = 70
       Height = 30
