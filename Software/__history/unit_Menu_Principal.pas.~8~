@@ -10,7 +10,7 @@ uses
 type
   TFRM_MENU_PRINCIPAL = class(TForm)
     pn_wallpaper: TPanel;
-    lbl_menu_principal: TLabel;
+    lbl_bem_vindo: TLabel;
     lbl_usuario_logado: TLabel;
     tmr_hora: TTimer;
     lbl_hora: TLabel;

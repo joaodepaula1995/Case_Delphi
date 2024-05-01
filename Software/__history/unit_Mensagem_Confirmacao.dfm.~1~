@@ -261,7 +261,7 @@ object FRM_MENSAGEM: TFRM_MENSAGEM
         08080808080808090A0A}
       Transparent = True
     end
-    object btn_ok: TBitBtn
+    object BitBtn2: TBitBtn
       Left = 213
       Top = 81
       Width = 70
@@ -371,7 +371,7 @@ object FRM_MENSAGEM: TFRM_MENSAGEM
         1111111111111111111111111111111111111111111111111111111111111111
         11111111111111110A0A}
       TabOrder = 0
-      OnClick = btn_okClick
+      OnClick = BitBtn2Click
     end
   end
 end

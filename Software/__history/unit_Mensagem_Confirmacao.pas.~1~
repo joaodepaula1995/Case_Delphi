@@ -1,4 +1,4 @@
-unit unit_Mensagem;
+unit unit_Mensagem_Confirmacao;
 
 interface
 
@@ -11,8 +11,9 @@ type
     lbl_mensagem: TLabel;
     pn_wallpaper_esquerda: TPanel;
     img_aviso: TImage;
-    btn_ok: TBitBtn;
-    procedure btn_okClick(Sender: TObject);
+    BitBtn2: TBitBtn;
+    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -26,7 +27,13 @@ implementation
 
 {$R *.dfm}
 
-procedure TFRM_MENSAGEM.btn_okClick(Sender: TObject);
+procedure TFRM_MENSAGEM.BitBtn1Click(Sender: TObject);
+begin
+  self.ModalResult := mrOk;
+  Application.Terminate;
+end;
+
+procedure TFRM_MENSAGEM.BitBtn2Click(Sender: TObject);
 begin
   close;
 end;

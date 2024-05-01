@@ -1,0 +1,71 @@
+unit unit_Categoria;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.WinXCalendars;
+
+type
+  TFRM_CATEGORIA = class(TForm)
+    pn_wallpaper: TPanel;
+    lbl_categoria: TLabel;
+    btn_novo: TBitBtn;
+    btn_salvar: TBitBtn;
+    btn_pesquisar: TBitBtn;
+    btn_deletar: TBitBtn;
+    txt_codcateg: TEdit;
+    lbl_codigo: TLabel;
+    txt_descricaocateg: TEdit;
+    lbl_descricao: TLabel;
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure txt_descricaocategKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
+    procedure btn_novoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_CATEGORIA: TFRM_CATEGORIA;
+
+implementation
+
+uses
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem;
+
+{$R *.dfm}
+
+procedure TFRM_CATEGORIA.btn_novoClick(Sender: TObject);
+begin
+  if txt_codcateg.Text <= '0' then
+
+  else
+  DM_Categoria.categoria.Append;
+end;
+
+procedure TFRM_CATEGORIA.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  close;
+end;
+
+procedure TFRM_CATEGORIA.FormShow(Sender: TObject);
+begin
+  txt_descricaocateg.SetFocus;
+  DM_Categoria.categoria.Append;
+end;
+
+procedure TFRM_CATEGORIA.txt_descricaocategKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if Key = #13 then
+  begin
+    btn_salvar.SetFocus;
+    Key := #0;
+  end;
+end;
+
+end.

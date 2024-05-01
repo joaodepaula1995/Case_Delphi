@@ -1,8 +1,8 @@
-object FRM_MENSAGEM: TFRM_MENSAGEM
+object FRM_MENSAGEM_CONFIRMACAO: TFRM_MENSAGEM_CONFIRMACAO
   Left = 0
   Top = 0
   BorderIcons = []
-  Caption = 'Aviso!'
+  Caption = 'Aten'#231#227'o!'
   ClientHeight = 160
   ClientWidth = 483
   Color = clBtnFace
@@ -261,7 +261,7 @@ object FRM_MENSAGEM: TFRM_MENSAGEM
         08080808080808090A0A}
       Transparent = True
     end
-    object btn_ok: TBitBtn
+    object BitBtn2: TBitBtn
       Left = 213
       Top = 81
       Width = 70
@@ -371,7 +371,7 @@ object FRM_MENSAGEM: TFRM_MENSAGEM
         1111111111111111111111111111111111111111111111111111111111111111
         11111111111111110A0A}
       TabOrder = 0
-      OnClick = btn_okClick
+      OnClick = BitBtn2Click
     end
   end
 end

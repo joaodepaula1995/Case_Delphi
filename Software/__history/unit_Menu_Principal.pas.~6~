@@ -5,12 +5,12 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.WinXCalendars, unit_Categoria;
+  Vcl.WinXCalendars;
 
 type
   TFRM_MENU_PRINCIPAL = class(TForm)
     pn_wallpaper: TPanel;
-    lbl_menu_principal: TLabel;
+    lbl_bem_vindo: TLabel;
     lbl_usuario_logado: TLabel;
     tmr_hora: TTimer;
     lbl_hora: TLabel;
@@ -26,7 +26,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure tmr_horaTimer(Sender: TObject);
     procedure btn_sair_menuClick(Sender: TObject);
-    procedure btn_categoriasClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,16 +42,10 @@ uses
 
 {$R *.dfm}
 
-procedure TFRM_MENU_PRINCIPAL.btn_categoriasClick(Sender: TObject);
-begin
-  FRM_CATEGORIA := TFRM_CATEGORIA.Create(Self);
-  FRM_CATEGORIA.ShowModal;
-end;
-
 procedure TFRM_MENU_PRINCIPAL.btn_sair_menuClick(Sender: TObject);
   var CanClose: Boolean;
 begin
-  FRM_FECHA_SISTEMA.lbl_mensagem.Caption := 'Deseja realmente sair do sistema?';
+    FRM_FECHA_SISTEMA.lbl_mensagem.Caption := 'Deseja realmente sair do sistema?';
   if FRM_FECHA_SISTEMA.ShowModal = mrCancel then
     CanClose := false;
 end;

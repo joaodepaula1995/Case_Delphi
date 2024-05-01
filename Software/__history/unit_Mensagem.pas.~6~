@@ -13,6 +13,7 @@ type
     img_aviso: TImage;
     btn_ok: TBitBtn;
     procedure btn_okClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
