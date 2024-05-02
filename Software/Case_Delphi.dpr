@@ -13,7 +13,9 @@ uses
   unit_Mensagem_Confirmacao in 'unit_Mensagem_Confirmacao.pas' {FRM_MENSAGEM_CONFIRMACAO},
   unit_Pesquisar in 'unit_Pesquisar.pas' {FRM_PESQUISAR},
   unit_Produto in 'unit_Produto.pas' {FRM_PRODUTO},
-  unitDM_Produto in 'unitDM_Produto.pas' {DM_Produto: TDataModule};
+  unitDM_Produto in 'unitDM_Produto.pas' {DM_Produto: TDataModule},
+  unit_Usuario in 'unit_Usuario.pas' {FRM_USUARIO},
+  unitDM_Usuario in 'unitDM_Usuario.pas' {DM_Usuario: TDataModule};
 
 {$R *.res}
 
@@ -30,8 +32,9 @@ begin
   Application.CreateForm(TFRM_MENSAGEM, FRM_MENSAGEM);
   Application.CreateForm(TFRM_MENSAGEM_CONFIRMACAO, FRM_MENSAGEM_CONFIRMACAO);
   Application.CreateForm(TFRM_PESQUISAR, FRM_PESQUISAR);
-  Application.CreateForm(TFRM_PESQUISAR, FRM_PESQUISAR);
   Application.CreateForm(TFRM_PRODUTO, FRM_PRODUTO);
   Application.CreateForm(TDM_Produto, DM_Produto);
+  Application.CreateForm(TFRM_USUARIO, FRM_USUARIO);
+  Application.CreateForm(TDM_Usuario, DM_Usuario);
   Application.Run;
 end.

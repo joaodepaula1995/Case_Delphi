@@ -1,0 +1,73 @@
+unit unit_Usuario;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.WinXCalendars, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TFRM_USUARIO = class(TForm)
+    pn_wallpaper: TPanel;
+    lbl_usuario: TLabel;
+    btn_novo: TBitBtn;
+    btn_salvar: TBitBtn;
+    btn_pesquisar: TBitBtn;
+    btn_deletar: TBitBtn;
+    lbl_coduser: TLabel;
+    lbl_nomeuser: TLabel;
+    txt_nomeuser: TDBEdit;
+    txt_coduser: TDBEdit;
+    txt_senhauser: TDBEdit;
+    lbl_senhauser: TLabel;
+    txt_emailuser: TDBEdit;
+    lbl_emailuser: TLabel;
+    procedure txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
+    procedure txt_senhauserKeyPress(Sender: TObject; var Key: Char);
+    procedure txt_emailuserKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_USUARIO: TFRM_USUARIO;
+
+implementation
+
+uses
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unit_Pesquisar, unit_Categoria, unitDM_Produto;
+
+{$R *.dfm}
+
+
+procedure TFRM_USUARIO.txt_emailuserKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    btn_salvar.SetFocus;
+    Key := #0;
+  end;
+end;
+
+procedure TFRM_USUARIO.txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    txt_senhauser.SetFocus;
+    Key := #0;
+  end;
+end;
+
+procedure TFRM_USUARIO.txt_senhauserKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    txt_emailuser.SetFocus;
+    Key := #0;
+  end;
+end;
+
+end.

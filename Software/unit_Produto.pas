@@ -10,7 +10,7 @@ uses
 type
   TFRM_PRODUTO = class(TForm)
     pn_wallpaper: TPanel;
-    lbl_categoria: TLabel;
+    lbl_produto: TLabel;
     btn_novo: TBitBtn;
     btn_salvar: TBitBtn;
     btn_pesquisar: TBitBtn;
@@ -43,6 +43,8 @@ type
     procedure txt_descricaocategClick(Sender: TObject);
     procedure txt_descricaocategEnter(Sender: TObject);
     procedure txt_descricaocategKeyPress(Sender: TObject; var Key: Char);
+    procedure txt_nomeprodKeyPress(Sender: TObject; var Key: Char);
+    procedure txt_precoKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -75,6 +77,8 @@ begin
                                           + 'WHERE c.descricaocateg LIKE :Pesquisa_Categoria '
                                           + 'ORDER BY c.descricaocateg;');
   FRM_PESQUISAR.ShowModal;
+  //DM_Produto.produtocodcateg.AsInteger :=  DM_Categoria.pesquisar_categoria.FieldByName('Código').AsInteger;
+  FRM_PRODUTO.txt_preco.SetFocus;
 end;
 
 
@@ -172,8 +176,8 @@ begin
   txt_nomeprod.SetFocus;
   DM_Produto.produto.Append;
   DM_Categoria.categoria.Append;
-//  txt_codcateg.Text := '';
-//  txt_descricaocateg.Text := '';
+  txt_codcateg.Text := '';
+  txt_descricaocateg.Text := '';
 end;
 
 procedure TFRM_PRODUTO.txt_descricaocategClick(Sender: TObject);
@@ -198,6 +202,24 @@ begin
     Limitar_Caracters_no_Campo: Integer;
   begin
     Limitar_Caracters_no_Campo := 100;
+  end;
+end;
+
+procedure TFRM_PRODUTO.txt_nomeprodKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    txt_descricaocateg.SetFocus;
+    Key := #0;
+  end;
+end;
+
+procedure TFRM_PRODUTO.txt_precoKeyPress(Sender: TObject; var Key: Char);
+begin
+    if Key = #13 then
+  begin
+    btn_salvar.SetFocus;
+    Key := #0;
   end;
 end;
 

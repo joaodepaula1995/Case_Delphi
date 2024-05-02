@@ -30,6 +30,7 @@ object DM_Produto: TDM_Produto
       FieldName = 'codprod'
       Origin = 'codprod'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object produtonomeprod: TStringField
       AutoGenerateValue = arDefault

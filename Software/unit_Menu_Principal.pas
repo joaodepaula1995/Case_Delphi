@@ -28,6 +28,7 @@ type
     procedure btn_sair_menuClick(Sender: TObject);
     procedure btn_categoriasClick(Sender: TObject);
     procedure btn_produtosClick(Sender: TObject);
+    procedure btn_usuarioClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,7 +41,7 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unit_Produto;
+  unit_Fecha_Sistema, unit_Produto, unit_Usuario;
 
 {$R *.dfm}
 
@@ -62,6 +63,12 @@ begin
   FRM_FECHA_SISTEMA.lbl_mensagem.Caption := 'Deseja realmente sair do sistema?';
   if FRM_FECHA_SISTEMA.ShowModal = mrCancel then
     CanClose := false;
+end;
+
+procedure TFRM_MENU_PRINCIPAL.btn_usuarioClick(Sender: TObject);
+begin
+  FRM_USUARIO := TFRM_USUARIO.Create(Self);
+  FRM_USUARIO.ShowModal;
 end;
 
 procedure TFRM_MENU_PRINCIPAL.FormCloseQuery(Sender: TObject;
