@@ -7,16 +7,16 @@ CREATE TABLE case_delphi.categoria (
 )
 
 CREATE TABLE case_delphi.produto (
-	codprod INT auto_increment NOT NULL,
-	nomeprod varchar(100) NULL,
-	codcateg INT NOT NULL,
-	preco DOUBLE NULL,
-	ultpreco DOUBLE NULL,
-	datacadastro DATETIME NULL,
-	dataalteracao DATETIME NULL,
-	CONSTRAINT produto_pk PRIMARY KEY (codprod),
-	CONSTRAINT produto_categoria_fk FOREIGN KEY (codcateg) REFERENCES case_delphi.categoria(codcateg)
-)
+    codprod INT auto_increment NOT NULL,
+    nomeprod VARCHAR(100) NULL,
+    codcateg INT NULL,
+    preco DOUBLE DEFAULT 0.00,
+    ultpreco DOUBLE DEFAULT 0.00,
+    datacadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    dataalteracao DATETIME NULL,
+    CONSTRAINT produto_pk PRIMARY KEY (codprod),
+    CONSTRAINT produto_categoria_fk FOREIGN KEY (codcateg) REFERENCES case_delphi.categoria(codcateg)
+);
 
 CREATE TABLE case_delphi.usuario (
 	coduser INT auto_increment NOT NULL,

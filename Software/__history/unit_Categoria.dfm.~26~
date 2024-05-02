@@ -655,8 +655,6 @@ object FRM_CATEGORIA: TFRM_CATEGORIA
       Font.Style = []
       ParentFont = False
       TabOrder = 4
-      OnChange = txt_descricaocategChange
-      OnKeyPress = txt_descricaocategKeyPress
     end
     object txt_codcateg: TDBEdit
       Left = 15

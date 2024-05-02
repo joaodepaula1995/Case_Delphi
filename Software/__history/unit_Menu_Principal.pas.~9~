@@ -27,7 +27,6 @@ type
     procedure tmr_horaTimer(Sender: TObject);
     procedure btn_sair_menuClick(Sender: TObject);
     procedure btn_categoriasClick(Sender: TObject);
-    procedure btn_produtosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,7 +39,7 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unit_Produto;
+  unit_Fecha_Sistema;
 
 {$R *.dfm}
 
@@ -48,12 +47,6 @@ procedure TFRM_MENU_PRINCIPAL.btn_categoriasClick(Sender: TObject);
 begin
   FRM_CATEGORIA := TFRM_CATEGORIA.Create(Self);
   FRM_CATEGORIA.ShowModal;
-end;
-
-procedure TFRM_MENU_PRINCIPAL.btn_produtosClick(Sender: TObject);
-begin
-  FRM_PRODUTO := TFRM_PRODUTO.Create(Self);
-  FRM_PRODUTO.ShowModal;
 end;
 
 procedure TFRM_MENU_PRINCIPAL.btn_sair_menuClick(Sender: TObject);

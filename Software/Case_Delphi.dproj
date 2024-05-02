@@ -145,6 +145,15 @@
             <Form>FRM_PESQUISAR</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="unit_Produto.pas">
+            <Form>FRM_PRODUTO</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unitDM_Produto.pas">
+            <Form>DM_Produto</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
