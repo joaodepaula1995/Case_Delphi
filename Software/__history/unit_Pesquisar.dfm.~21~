@@ -4,7 +4,7 @@ object FRM_PESQUISAR: TFRM_PESQUISAR
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
   Caption = 'Pesquisar'
-  ClientHeight = 360
+  ClientHeight = 423
   ClientWidth = 746
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,13 +14,14 @@ object FRM_PESQUISAR: TFRM_PESQUISAR
   Font.Style = []
   Position = poScreenCenter
   Scaled = False
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   TextHeight = 15
   object pn_wallpaper: TPanel
     Left = 0
     Top = 0
     Width = 753
-    Height = 361
+    Height = 425
     Margins.Top = 0
     Margins.Right = 0
     Color = 13742238
@@ -60,7 +61,7 @@ object FRM_PESQUISAR: TFRM_PESQUISAR
       Left = 8
       Top = 68
       Width = 729
-      Height = 281
+      Height = 349
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -15

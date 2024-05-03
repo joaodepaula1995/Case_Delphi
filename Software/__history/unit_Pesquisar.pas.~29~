@@ -31,7 +31,7 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unitDM_Usuario, unitDM_Produto;
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unitDM_Usuario, unitDM_Produto, unit_Produto;
 
 {$R *.dfm}
 
@@ -112,7 +112,9 @@ begin
     end;
   if lbl_pesquisar.Caption = 'Pesquisar Produto' then
     begin
-      DM_Produto.produto.Locate('codprod', DM_Usuario.pesquisar_usuario.FieldByName('Código').AsInteger, []);
+      DM_Produto.produto.Locate('codprod', DM_Produto.pesquisar_produto.FieldByName('Código').AsInteger, []);
+      DM_Produto.produto.Locate('codcateg', DM_Produto.pesquisar_produto.FieldByName('Código Categoria').AsInteger, []);
+      FRM_PRODUTO.txt_descricaocateg.Text := DM_Produto.pesquisar_produto.FieldByName('Categoria').AsString;
     end;
     close;
 end;

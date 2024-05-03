@@ -1,4 +1,4 @@
-object DM_Produto: TDM_Produto
+object DM_Pesquisa_Geral: TDM_Pesquisa_Geral
   Height = 480
   Width = 640
   object conexao: TFDConnection
@@ -18,17 +18,9 @@ object DM_Produto: TDM_Produto
     Left = 144
     Top = 16
   end
-  object produto: TFDTable
-    IndexFieldNames = 'codprod'
+  object pesquisar: TFDQuery
     Connection = conexao
-    ResourceOptions.AssignedValues = [rvEscapeExpand]
-    TableName = 'produto'
-    Left = 32
-    Top = 80
-  end
-  object ds_produto: TDataSource
-    DataSet = produto
-    Left = 104
-    Top = 80
+    Left = 48
+    Top = 88
   end
 end

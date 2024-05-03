@@ -26,14 +26,6 @@ type
     pesquisar_produto: TFDQuery;
     ds_pesquisar_produto: TDataSource;
     produto: TFDQuery;
-    produtocodprod: TFDAutoIncField;
-    produtonomeprod: TStringField;
-    produtocodcateg: TIntegerField;
-    produtopreco: TFloatField;
-    produtoultpreco: TFloatField;
-    produtodatacadastro: TDateTimeField;
-    produtodataalteracao: TDateTimeField;
-    produtoCategoria: TStringField;
   private
     { Private declarations }
   public

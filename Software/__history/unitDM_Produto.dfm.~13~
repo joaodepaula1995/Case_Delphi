@@ -138,7 +138,7 @@ object DM_Produto: TDM_Produto
       AutoGenerateValue = arDefault
       FieldName = 'Categoria'
       Origin = 'descricaocateg'
-      ProviderFlags = [pfHidden]
+      ProviderFlags = []
       ReadOnly = True
       Size = 100
     end

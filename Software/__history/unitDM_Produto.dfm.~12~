@@ -18,46 +18,45 @@ object DM_Produto: TDM_Produto
     Left = 144
     Top = 16
   end
-  object produto: TFDTable
-    IndexFieldNames = 'codprod'
+  object produto_OLD: TFDTable
     Connection = conexao
     ResourceOptions.AssignedValues = [rvEscapeExpand]
-    TableName = 'produto'
     Left = 32
     Top = 80
-    object produtocodprod: TFDAutoIncField
+    object produto_OLDcodprod: TFDAutoIncField
       FieldName = 'codprod'
       Origin = 'codprod'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
-    object produtonomeprod: TStringField
+    object produto_OLDnomeprod: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'nomeprod'
       Origin = 'nomeprod'
       Size = 100
     end
-    object produtocodcateg: TIntegerField
+    object produto_OLDcodcateg: TIntegerField
       FieldName = 'codcateg'
       Origin = 'codcateg'
       Required = True
     end
-    object produtopreco: TFloatField
+    object produto_OLDpreco: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'preco'
       Origin = 'preco'
     end
-    object produtoultpreco: TFloatField
+    object produto_OLDultpreco: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'ultpreco'
       Origin = 'ultpreco'
     end
-    object produtodatacadastro: TDateTimeField
+    object produto_OLDdatacadastro: TDateTimeField
       AutoGenerateValue = arDefault
       FieldName = 'datacadastro'
       Origin = 'datacadastro'
       EditMask = '##/##/####;1;_'
     end
-    object produtodataalteracao: TDateTimeField
+    object produto_OLDdataalteracao: TDateTimeField
       AutoGenerateValue = arDefault
       FieldName = 'dataalteracao'
       Origin = 'dataalteracao'
@@ -65,8 +64,38 @@ object DM_Produto: TDM_Produto
     end
   end
   object ds_produto: TDataSource
-    DataSet = produto
+    DataSet = produto_OLD
     Left = 104
     Top = 80
+  end
+  object pesquisar_produto: TFDQuery
+    Connection = conexao
+    Left = 56
+    Top = 144
+  end
+  object ds_pesquisar_produto: TDataSource
+    DataSet = pesquisar_produto
+    Left = 184
+    Top = 144
+  end
+  object produto: TFDQuery
+    Connection = conexao
+    SQL.Strings = (
+      'SELECT '
+      'p.*, '
+      'c.descricaocateg as Categoria '
+      'FROM produto p '
+      'INNER JOIN categoria c '
+      'ON p.codcateg = c.codcateg '
+      'WHERE p.codprod = :codprod;')
+    Left = 48
+    Top = 288
+    ParamData = <
+      item
+        Name = 'CODPROD'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
   end
 end

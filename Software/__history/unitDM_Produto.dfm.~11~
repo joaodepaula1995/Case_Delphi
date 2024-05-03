@@ -1,4 +1,5 @@
 object DM_Produto: TDM_Produto
+  OnCreate = DataModuleCreate
   Height = 480
   Width = 640
   object conexao: TFDConnection
@@ -18,45 +19,45 @@ object DM_Produto: TDM_Produto
     Left = 144
     Top = 16
   end
-  object produto_OLD: TFDTable
+  object produto: TFDTable
     Connection = conexao
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     Left = 32
     Top = 80
-    object produto_OLDcodprod: TFDAutoIncField
+    object produtocodprod: TFDAutoIncField
       FieldName = 'codprod'
       Origin = 'codprod'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object produto_OLDnomeprod: TStringField
+    object produtonomeprod: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'nomeprod'
       Origin = 'nomeprod'
       Size = 100
     end
-    object produto_OLDcodcateg: TIntegerField
+    object produtocodcateg: TIntegerField
       FieldName = 'codcateg'
       Origin = 'codcateg'
       Required = True
     end
-    object produto_OLDpreco: TFloatField
+    object produtopreco: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'preco'
       Origin = 'preco'
     end
-    object produto_OLDultpreco: TFloatField
+    object produtoultpreco: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'ultpreco'
       Origin = 'ultpreco'
     end
-    object produto_OLDdatacadastro: TDateTimeField
+    object produtodatacadastro: TDateTimeField
       AutoGenerateValue = arDefault
       FieldName = 'datacadastro'
       Origin = 'datacadastro'
       EditMask = '##/##/####;1;_'
     end
-    object produto_OLDdataalteracao: TDateTimeField
+    object produtodataalteracao: TDateTimeField
       AutoGenerateValue = arDefault
       FieldName = 'dataalteracao'
       Origin = 'dataalteracao'
@@ -65,8 +66,8 @@ object DM_Produto: TDM_Produto
   end
   object ds_produto: TDataSource
     DataSet = produto
-    Left = 128
-    Top = 288
+    Left = 104
+    Top = 80
   end
   object pesquisar_produto: TFDQuery
     Connection = conexao
@@ -78,8 +79,7 @@ object DM_Produto: TDM_Produto
     Left = 184
     Top = 144
   end
-  object produto: TFDQuery
-    Active = True
+  object FDQuery1: TFDQuery
     Connection = conexao
     SQL.Strings = (
       'SELECT '
@@ -98,49 +98,5 @@ object DM_Produto: TDM_Produto
         ParamType = ptInput
         Value = Null
       end>
-    object produtocodprod: TFDAutoIncField
-      FieldName = 'codprod'
-      Origin = 'codprod'
-      ProviderFlags = [pfInWhere, pfInKey]
-    end
-    object produtonomeprod: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nomeprod'
-      Origin = 'nomeprod'
-      Size = 100
-    end
-    object produtocodcateg: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'codcateg'
-      Origin = 'codcateg'
-    end
-    object produtopreco: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'preco'
-      Origin = 'preco'
-    end
-    object produtoultpreco: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'ultpreco'
-      Origin = 'ultpreco'
-    end
-    object produtodatacadastro: TDateTimeField
-      AutoGenerateValue = arDefault
-      FieldName = 'datacadastro'
-      Origin = 'datacadastro'
-    end
-    object produtodataalteracao: TDateTimeField
-      AutoGenerateValue = arDefault
-      FieldName = 'dataalteracao'
-      Origin = 'dataalteracao'
-    end
-    object produtoCategoria: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'Categoria'
-      Origin = 'descricaocateg'
-      ProviderFlags = [pfHidden]
-      ReadOnly = True
-      Size = 100
-    end
   end
 end
