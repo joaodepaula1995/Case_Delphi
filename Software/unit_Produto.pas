@@ -32,6 +32,7 @@ type
     txt_dataalteracao: TDBEdit;
     btn_cadastra_categoria: TBitBtn;
     txt_codcateg: TDBEdit;
+    txt_codcateg_produto: TDBEdit;
     procedure btn_cadastra_categoriaClick(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
@@ -45,6 +46,7 @@ type
     procedure txt_descricaocategKeyPress(Sender: TObject; var Key: Char);
     procedure txt_nomeprodKeyPress(Sender: TObject; var Key: Char);
     procedure txt_precoKeyPress(Sender: TObject; var Key: Char);
+    procedure btn_pesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,9 +64,6 @@ uses
 {$R *.dfm}
 
 
-//Falta ajustar a pesquisa dos Produtos
-//Falta ajustar o modo de salvar, que não esta pegando a informação da tabela categoria
-
 procedure Pesquisa_Categoria;
 begin
   FRM_PESQUISAR.lbl_pesquisar.Caption := 'Pesquisar Categoria';
@@ -78,6 +77,7 @@ begin
                                           + 'ORDER BY c.descricaocateg;');
   FRM_PESQUISAR.ShowModal;
   //DM_Produto.produtocodcateg.AsInteger :=  DM_Categoria.pesquisar_categoria.FieldByName('Código').AsInteger;
+  FRM_PRODUTO.txt_codcateg_produto.Text := FRM_PRODUTO.txt_codcateg.Text;
   FRM_PRODUTO.txt_preco.SetFocus;
 end;
 
@@ -124,6 +124,26 @@ begin
   DM_Categoria.categoria.Append;
 end;
 
+procedure TFRM_PRODUTO.btn_pesquisarClick(Sender: TObject);
+begin
+  FRM_PESQUISAR.lbl_pesquisar.Caption := 'Pesquisar Produto';
+  DM_Produto.pesquisar_produto.Close;
+  DM_Produto.pesquisar_produto.SQL.Clear;
+  DM_Produto.pesquisar_produto.SQL.Add( 'SELECT '
+                                          + 'p.codprod as Código, '
+                                          + 'p.nomeprod as Produto, '
+                                          + 'p.preco as Preço, '
+                                          + 'c.codcateg as "Código Categoria", '
+                                          + 'c.descricaocateg as Categoria, '
+                                          + 'p.dataalteracao as "Ultima Alteração" '
+                                          + 'FROM produto p '
+                                          + 'INNER JOIN categoria c '
+                                          + 'ON p.codcateg = c.codcateg '
+                                          + 'WHERE p.nomeprod LIKE :Pesquisa_Produto '
+                                          + 'ORDER BY p.nomeprod;');
+  FRM_PESQUISAR.ShowModal;
+end;
+
 procedure TFRM_PRODUTO.btn_pesquisa_categoriaClick(Sender: TObject);
 begin
   Pesquisa_Categoria;
@@ -156,11 +176,12 @@ begin
     end
     else
     begin
+    //Ajustar a edição do cadastro, não esta editando corretamente a categoria
       DM_Produto.produto.Edit;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Produto editado com sucesso!';
       FRM_MENSAGEM.ShowModal;
       DM_Produto.produto.Post;
-      txt_descricaocateg.SetFocus;
+      txt_nomeprod.SetFocus;
       DM_Produto.produto.Append;
       DM_Categoria.categoria.Append;
     end;

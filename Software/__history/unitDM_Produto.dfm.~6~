@@ -71,14 +71,4 @@ object DM_Produto: TDM_Produto
     Left = 104
     Top = 80
   end
-  object pesquisar_produto: TFDQuery
-    Connection = conexao
-    Left = 56
-    Top = 144
-  end
-  object ds_pesquisar_produto: TDataSource
-    DataSet = pesquisar_produto
-    Left = 184
-    Top = 144
-  end
 end

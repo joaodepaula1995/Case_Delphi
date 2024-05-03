@@ -18,8 +18,8 @@ object FRM_PRODUTO: TFRM_PRODUTO
   OnShow = FormShow
   TextHeight = 15
   object pn_wallpaper: TPanel
-    Left = -3
-    Top = -3
+    Left = -8
+    Top = -2
     Width = 753
     Height = 425
     Margins.Top = 0
@@ -571,6 +571,7 @@ object FRM_PRODUTO: TFRM_PRODUTO
         1111111111111111111111111111111111111111111111111111111111111111
         11111111111111085573}
       TabOrder = 2
+      OnClick = btn_pesquisarClick
     end
     object btn_deletar: TBitBtn
       Left = 333
@@ -879,7 +880,7 @@ object FRM_PRODUTO: TFRM_PRODUTO
     object txt_datacadastro: TDBEdit
       Left = 437
       Top = 132
-      Width = 124
+      Width = 180
       Height = 33
       DataField = 'datacadastro'
       DataSource = DM_Produto.ds_produto
@@ -896,7 +897,7 @@ object FRM_PRODUTO: TFRM_PRODUTO
     object txt_dataalteracao: TDBEdit
       Left = 130
       Top = 318
-      Width = 120
+      Width = 183
       Height = 33
       DataField = 'dataalteracao'
       DataSource = DM_Produto.ds_produto
@@ -991,7 +992,7 @@ object FRM_PRODUTO: TFRM_PRODUTO
     Width = 65
     Height = 33
     DataField = 'codcateg'
-    DataSource = DM_Produto.ds_produto
+    DataSource = DM_Categoria.ds_categoria
     Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -1000,5 +1001,21 @@ object FRM_PRODUTO: TFRM_PRODUTO
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+  end
+  object txt_codcateg_produto: TDBEdit
+    Left = 669
+    Top = 47
+    Width = 65
+    Height = 33
+    DataField = 'codcateg'
+    DataSource = DM_Produto.ds_produto
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Microsoft New Tai Lue'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
   end
 end

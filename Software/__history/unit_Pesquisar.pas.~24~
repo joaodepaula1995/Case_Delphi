@@ -14,7 +14,6 @@ type
     txt_pesquisar: TEdit;
     tbl_pesquisar: TDBGrid;
     btn_pesquisar: TBitBtn;
-    DataSource1: TDataSource;
     procedure txt_pesquisarKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure btn_pesquisarClick(Sender: TObject);
@@ -32,7 +31,7 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unitDM_Usuario;
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unitDM_Usuario, unitDM_Produto;
 
 {$R *.dfm}
 
@@ -42,7 +41,6 @@ begin
     begin
       tbl_pesquisar.DataSource := DM_Categoria.ds_pesquisar_categoria;
 
-      tbl_pesquisar.Refresh;
       DM_Categoria.pesquisar_categoria.Close;
       DM_Categoria.pesquisar_categoria.ParamByName('Pesquisa_Categoria').AsString := '%' + txt_pesquisar.Text + '%';
 
@@ -53,12 +51,25 @@ begin
   if lbl_pesquisar.Caption = 'Pesquisar Usuário' then
     begin
       tbl_pesquisar.DataSource := DM_Usuario.ds_pesquisar_usuario;
-      tbl_pesquisar.Refresh;
+
       DM_Usuario.pesquisar_usuario.Close;
       DM_Usuario.pesquisar_usuario.ParamByName('Pesquisa_Usuario').AsString := '%' + txt_pesquisar.Text + '%';
 
       DM_Usuario.pesquisar_usuario.Open;
-      //tbl_pesquisar.Columns[1].Width := 600;
+      tbl_pesquisar.Columns[1].Width := 300;
+      tbl_pesquisar.Columns[2].Width := 300;
+    end
+  else
+  if lbl_pesquisar.Caption = 'Pesquisar Produto' then
+    begin
+      tbl_pesquisar.DataSource := DM_Produto.ds_pesquisar_produto;
+
+      DM_Produto.pesquisar_produto.Close;
+      DM_Produto.pesquisar_produto.ParamByName('Pesquisa_Produto').AsString := '%' + txt_pesquisar.Text + '%';
+
+      DM_Produto.pesquisar_produto.Open;
+//      tbl_pesquisar.Columns[1].Width := 300;
+//      tbl_pesquisar.Columns[2].Width := 300;
     end;
 
 end;
@@ -74,7 +85,12 @@ begin
     begin
       DM_Usuario.ds_pesquisar_usuario.DataSet.Close;
     end;
-    close;
+  if lbl_pesquisar.Caption = 'Pesquisar Produto' then
+    begin
+      DM_Produto.ds_pesquisar_produto.DataSet.Close;
+    end;
+
+  tbl_pesquisar.DataSource := nil;
 end;
 
 procedure TFRM_PESQUISAR.FormShow(Sender: TObject);
@@ -93,6 +109,11 @@ begin
   if lbl_pesquisar.Caption = 'Pesquisar Usuário' then
     begin
       DM_Usuario.usuario.Locate('coduser', DM_Usuario.pesquisar_usuario.FieldByName('Código').AsInteger, []);
+    end;
+  if lbl_pesquisar.Caption = 'Pesquisar Produto' then
+    begin
+      DM_Produto.produto.Locate('codprod', DM_Produto.pesquisar_produto.FieldByName('Código').AsInteger, []);
+      DM_Produto.produto.Locate('codcateg', DM_Produto.pesquisar_produto.FieldByName('Código Categoria').AsInteger, []);
     end;
     close;
 end;

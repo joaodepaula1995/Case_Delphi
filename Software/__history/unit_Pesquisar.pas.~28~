@@ -115,6 +115,7 @@ begin
       DM_Produto.produto.Locate('codprod', DM_Produto.pesquisar_produto.FieldByName('Código').AsInteger, []);
       DM_Produto.produto.Locate('codcateg', DM_Produto.pesquisar_produto.FieldByName('Código Categoria').AsInteger, []);
       FRM_PRODUTO.txt_descricaocateg.Text := DM_Produto.pesquisar_produto.FieldByName('Categoria').AsString;
+
     end;
     close;
 end;

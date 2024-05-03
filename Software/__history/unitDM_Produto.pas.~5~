@@ -23,8 +23,6 @@ type
     produtoultpreco: TFloatField;
     produtodatacadastro: TDateTimeField;
     produtodataalteracao: TDateTimeField;
-    pesquisar_produto: TFDQuery;
-    ds_pesquisar_produto: TDataSource;
   private
     { Private declarations }
   public
