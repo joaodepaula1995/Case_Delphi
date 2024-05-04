@@ -1,0 +1,88 @@
+unit unit_Alteracao_Produtos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.WinXCalendars, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TFRM_ALTERACAO_PRODUTOS = class(TForm)
+    pn_wallpaper: TPanel;
+    lbl_alteracao: TLabel;
+    btn_salvar: TBitBtn;
+    lbl_informe: TLabel;
+    txt_porcentagem: TEdit;
+    procedure btn_salvarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_ALTERACAO_PRODUTOS: TFRM_ALTERACAO_PRODUTOS;
+
+implementation
+
+uses
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unit_Pesquisar, unit_Categoria, unitDM_Produto,
+  unit_Produto;
+
+{$R *.dfm}
+
+procedure TFRM_ALTERACAO_PRODUTOS.btn_salvarClick(Sender: TObject);
+var
+  Porcentagem: Double;
+begin
+  if TryStrToFloat(txt_porcentagem.Text, Porcentagem) then
+  begin
+    // Converter a porcentagem em um fator multiplicador
+    Porcentagem := (Porcentagem / 100);
+
+    // Configurar o modo de atualização em cache e abrir o dataset
+    DM_produto.produto.CachedUpdates := True;
+    DM_produto.produto.Open;
+
+    // Iniciar uma transação
+    DM_produto.produto.Connection.StartTransaction;
+    try
+      // Percorrer os registros
+      DM_produto.produto.First;
+      while not DM_produto.produto.Eof do
+      begin
+        // Salvar o valor anterior do campo preco no campo ultpreco
+        DM_produto.produto.Edit;
+        DM_produto.produto.FieldByName('ultpreco').Value := DM_produto.produto.FieldByName('preco').Value;
+
+        // Calcular e atualizar o novo valor de preco com base na porcentagem
+        DM_produto.produto.FieldByName('preco').Value := DM_produto.produto.FieldByName('preco').AsFloat * Porcentagem;
+
+        // Atualizar a data de alteração
+        DM_produto.produto.FieldByName('dataalteracao').AsDateTime := Now;
+
+        // Postar as alterações no dataset
+        DM_produto.produto.Post;
+
+        // Avançar para o próximo registro
+        DM_produto.produto.Next;
+      end;
+
+      // Aplicar as alterações no banco de dados
+      DM_produto.produto.ApplyUpdates(-1);
+
+      // Confirmar a transação
+      DM_produto.produto.Connection.Commit;
+    except
+      // Em caso de erro, reverter a transação
+      DM_produto.produto.Connection.Rollback;
+      raise;
+    end;
+  end
+  else
+  begin
+    ShowMessage('Porcentagem inválida.');
+  end;
+end;
+end.

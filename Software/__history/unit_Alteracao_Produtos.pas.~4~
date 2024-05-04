@@ -1,0 +1,35 @@
+unit unit_Alteracao_Produtos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.WinXCalendars, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TFRM_ALTERACAO_PRODUTOS = class(TForm)
+    pn_wallpaper: TPanel;
+    lbl_produto: TLabel;
+    btn_salvar: TBitBtn;
+    txt_preco: TDBEdit;
+    lbl_preco: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_ALTERACAO_PRODUTOS: TFRM_ALTERACAO_PRODUTOS;
+  DataAlteracao: TDateTime;
+
+implementation
+
+uses
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unit_Pesquisar, unit_Categoria, unitDM_Produto,
+  unit_Produto;
+
+{$R *.dfm}
+
+end.

@@ -48,7 +48,7 @@ uses
 
 procedure TFRM_MENU_PRINCIPAL.btn_alteracao_produtosClick(Sender: TObject);
 begin
-  FRM_ALTERACAO_PRODUTOS := TFRM_ALTERACAO_PRODUTOS.Create(Self);
+  FRM_ALTERACAO_PRODUTOS := TFRM_CATEGORIA.Create(Self);
   FRM_ALTERACAO_PRODUTOS.ShowModal;
 end;
 

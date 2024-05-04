@@ -81,8 +81,6 @@ object DM_Produto: TDM_Produto
   object produto: TFDQuery
     Active = True
     Connection = conexao
-    UpdateOptions.AssignedValues = [uvUpdateMode]
-    UpdateOptions.UpdateMode = upWhereAll
     SQL.Strings = (
       'SELECT '
       'p.*, '
@@ -104,7 +102,6 @@ object DM_Produto: TDM_Produto
       FieldName = 'codprod'
       Origin = 'codprod'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object produtonomeprod: TStringField
       AutoGenerateValue = arDefault

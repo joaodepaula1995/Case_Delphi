@@ -29,7 +29,6 @@ type
     procedure btn_categoriasClick(Sender: TObject);
     procedure btn_produtosClick(Sender: TObject);
     procedure btn_usuarioClick(Sender: TObject);
-    procedure btn_alteracao_produtosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,15 +41,9 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unit_Produto, unit_Usuario, unit_Alteracao_Produtos;
+  unit_Fecha_Sistema, unit_Produto, unit_Usuario;
 
 {$R *.dfm}
-
-procedure TFRM_MENU_PRINCIPAL.btn_alteracao_produtosClick(Sender: TObject);
-begin
-  FRM_ALTERACAO_PRODUTOS := TFRM_ALTERACAO_PRODUTOS.Create(Self);
-  FRM_ALTERACAO_PRODUTOS.ShowModal;
-end;
 
 procedure TFRM_MENU_PRINCIPAL.btn_categoriasClick(Sender: TObject);
 begin

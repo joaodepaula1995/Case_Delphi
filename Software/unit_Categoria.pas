@@ -129,8 +129,6 @@ procedure TFRM_CATEGORIA.FormShow(Sender: TObject);
 begin
   txt_descricaocateg.SetFocus;
   DM_Categoria.categoria.Append;
-//  txt_codcateg.Text := '';
-//  txt_descricaocateg.Text := '';
 end;
 
 procedure TFRM_CATEGORIA.txt_descricaocategChange(Sender: TObject);
