@@ -27,10 +27,8 @@ type
     lbl_ultimo_preco: TRLLabel;
     lbl_data_alteracao: TRLLabel;
     lbl_data_cadastro: TRLLabel;
-    data_impressao_relatorio: TRLSystemInfo;
+    RLSystemInfo1: TRLSystemInfo;
     lbl_______: TRLLabel;
-    RLBand4: TRLBand;
-    pagina_relatorio: TRLSystemInfo;
   private
     { Private declarations }
   public

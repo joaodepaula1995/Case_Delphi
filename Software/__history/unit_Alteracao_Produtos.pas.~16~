@@ -20,7 +20,6 @@ type
     fd_atualizacao_produtos: TFDQuery;
     Label1: TLabel;
     Image1: TImage;
-    Label2: TLabel;
     procedure btn_salvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure txt_porcentagemKeyPress(Sender: TObject; var Key: Char);

@@ -141,12 +141,11 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object data_impressao_relatorio: TRLSystemInfo
-        Left = 680
+      object RLSystemInfo1: TRLSystemInfo
+        Left = 585
         Top = 3
-        Width = 39
+        Width = 134
         Height = 17
-        Alignment = taRightJustify
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -284,28 +283,6 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         Font.Height = -12
         Font.Name = 'Microsoft New Tai Lue'
         Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-    end
-    object RLBand4: TRLBand
-      Left = 38
-      Top = 137
-      Width = 718
-      Height = 32
-      BandType = btFooter
-      object pagina_relatorio: TRLSystemInfo
-        Left = 626
-        Top = 7
-        Width = 89
-        Height = 17
-        Alignment = taRightJustify
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Microsoft New Tai Lue'
-        Font.Style = []
-        Info = itPageNumber
         ParentFont = False
         Text = ''
       end

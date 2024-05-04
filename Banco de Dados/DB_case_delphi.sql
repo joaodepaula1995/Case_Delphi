@@ -28,4 +28,5 @@ CREATE TABLE case_delphi.usuario (
 
 INSERT INTO case_delphi.usuario
 (nomeuser, senhauser, emailuser)
-VALUES(VSM, 1, vsm.joao.batista@gmail.com);
+VALUES('VSM', 1, 'vsm.joao.batista@gmail.com');
+

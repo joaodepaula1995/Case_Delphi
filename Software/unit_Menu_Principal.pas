@@ -44,7 +44,7 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unit_Produto, unit_Usuario, unit_Alteracao_Produtos, unit_Relatorio_Produtos, unitDM_Produto;
+  unit_Fecha_Sistema, unit_Produto, unit_Usuario, unit_Alteracao_Produtos, unit_Relatorio_Produtos, unitDM_Produto, unit_Mensagem_Confirmacao;
 
 {$R *.dfm}
 
@@ -68,23 +68,31 @@ end;
 
 procedure TFRM_MENU_PRINCIPAL.btn_relatorioClick(Sender: TObject);
 begin
-  DM_Produto.produtos_relatorio.Close;
-  DM_Produto.produtos_relatorio.SQL.Clear;
-  DM_Produto.produtos_relatorio.SQL.Add('SELECT '
-                                      + 'p.codprod, '
-                                      + 'p.nomeprod, '
-                                      + 'p.preco, '
-                                      + 'p.ultpreco, '
-                                      + 'c.codcateg, '
-                                      + 'c.descricaocateg as categoria, '
-                                      + 'p.datacadastro, '
-                                      + 'p.dataalteracao '
-                                      + 'FROM produto p '
-                                      + 'INNER JOIN categoria c '
-                                      + 'ON p.codcateg = c.codcateg '
-                                      + 'ORDER BY p.nomeprod;');
-  DM_Produto.produtos_relatorio.Open;
-  FRM_RELATORIO_PRODUTOS.rl_produtos_relatorio.Preview();
+  try
+    FRM_MENSAGEM_CONFIRMACAO.lbl_mensagem.Caption := 'Deseja visualizar o Relátorio?';
+    FRM_MENSAGEM_CONFIRMACAO.ShowModal;
+  finally
+  if FRM_MENSAGEM_CONFIRMACAO.CONFIRMACAO = 'S' then
+  begin
+    DM_Produto.produtos_relatorio.Close;
+    DM_Produto.produtos_relatorio.SQL.Clear;
+    DM_Produto.produtos_relatorio.SQL.Add('SELECT '
+                                        + 'p.codprod, '
+                                        + 'p.nomeprod, '
+                                        + 'p.preco, '
+                                        + 'p.ultpreco, '
+                                        + 'c.codcateg, '
+                                        + 'c.descricaocateg as categoria, '
+                                        + 'p.datacadastro, '
+                                        + 'p.dataalteracao '
+                                        + 'FROM produto p '
+                                        + 'INNER JOIN categoria c '
+                                        + 'ON p.codcateg = c.codcateg '
+                                        + 'ORDER BY p.nomeprod;');
+    DM_Produto.produtos_relatorio.Open;
+    FRM_RELATORIO_PRODUTOS.rl_produtos_relatorio.Preview();
+  end;
+  end;
 end;
 
 procedure TFRM_MENU_PRINCIPAL.btn_sair_menuClick(Sender: TObject);

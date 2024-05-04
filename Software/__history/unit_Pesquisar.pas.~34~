@@ -14,11 +14,14 @@ type
     txt_pesquisar: TEdit;
     tbl_pesquisar: TDBGrid;
     btn_pesquisar: TBitBtn;
+    ds_pesquisar: TDataSource;
+    img_wallpaper: TImage;
     procedure txt_pesquisarKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure btn_pesquisarClick(Sender: TObject);
     procedure tbl_pesquisarDblClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +34,7 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unitDM_Usuario, unitDM_Produto;
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unitDM_Usuario, unitDM_Produto, unit_Produto, unitDM_Pesquisa_Geral;
 
 {$R *.dfm}
 
@@ -76,27 +79,33 @@ end;
 
 procedure TFRM_PESQUISAR.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  if lbl_pesquisar.Caption = 'Pesquisar Categoria' then
-    begin
-      DM_Categoria.ds_pesquisar_categoria.DataSet.Close;
-    end
-  else
-  if lbl_pesquisar.Caption = 'Pesquisar Usuário' then
-    begin
-      DM_Usuario.ds_pesquisar_usuario.DataSet.Close;
-    end;
-  if lbl_pesquisar.Caption = 'Pesquisar Produto' then
-    begin
-      DM_Produto.ds_pesquisar_produto.DataSet.Close;
-    end;
-
+//  if lbl_pesquisar.Caption = 'Pesquisar Categoria' then
+//    begin
+//      DM_Categoria.ds_pesquisar_categoria.DataSet.Close;
+//    end
+//  else
+//  if lbl_pesquisar.Caption = 'Pesquisar Usuário' then
+//    begin
+//      DM_Usuario.ds_pesquisar_usuario.DataSet.Close;
+//    end;
+//  if lbl_pesquisar.Caption = 'Pesquisar Produto' then
+//    begin
+//      DM_Produto.ds_pesquisar_produto.DataSet.Close;
+//    end;
+//
   tbl_pesquisar.DataSource := nil;
+end;
+
+procedure TFRM_PESQUISAR.FormCreate(Sender: TObject);
+begin
+  //ds_pesquisar.DataSet := DM_Pesquisa_Geral.pesquisar;
 end;
 
 procedure TFRM_PESQUISAR.FormShow(Sender: TObject);
 begin
   txt_pesquisar.Text := '';
   txt_pesquisar.SetFocus;
+  btn_pesquisar.Click;
 end;
 
 procedure TFRM_PESQUISAR.tbl_pesquisarDblClick(Sender: TObject);
@@ -114,8 +123,9 @@ begin
     begin
       DM_Produto.produto.Locate('codprod', DM_Produto.pesquisar_produto.FieldByName('Código').AsInteger, []);
       DM_Produto.produto.Locate('codcateg', DM_Produto.pesquisar_produto.FieldByName('Código Categoria').AsInteger, []);
+      FRM_PRODUTO.txt_descricaocateg.Text := DM_Produto.pesquisar_produto.FieldByName('Categoria').AsString;
     end;
-    close;
+    ModalResult := mrOk;
 end;
 
 procedure TFRM_PESQUISAR.txt_pesquisarKeyPress(Sender: TObject; var Key: Char);

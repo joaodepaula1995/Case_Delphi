@@ -71,8 +71,12 @@ begin
       DM_Produto.pesquisar_produto.ParamByName('Pesquisa_Produto').AsString := '%' + txt_pesquisar.Text + '%';
 
       DM_Produto.pesquisar_produto.Open;
-//      tbl_pesquisar.Columns[1].Width := 300;
-//      tbl_pesquisar.Columns[2].Width := 300;
+      tbl_pesquisar.Columns[0].Width := 60;
+      tbl_pesquisar.Columns[1].Width := 180;
+      tbl_pesquisar.Columns[2].Width := 80;
+      tbl_pesquisar.Columns[3].Width := 110;
+      tbl_pesquisar.Columns[4].Width := 130;
+      tbl_pesquisar.Columns[5].Width := 120;
     end;
 
 end;
