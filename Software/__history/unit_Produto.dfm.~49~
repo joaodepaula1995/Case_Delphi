@@ -755,8 +755,7 @@ object FRM_PRODUTO: TFRM_PRODUTO
       Width = 349
       Height = 33
       CharCase = ecUpperCase
-      DataField = 'Categoria'
-      DataSource = DM_Produto.ds_produto
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
@@ -765,13 +764,10 @@ object FRM_PRODUTO: TFRM_PRODUTO
       ParentFont = False
       ReadOnly = True
       TabOrder = 6
-      OnClick = txt_descricaocategClick
-      OnEnter = txt_descricaocategEnter
-      OnKeyPress = txt_descricaocategKeyPress
     end
     object btn_pesquisa_categoria: TBitBtn
       Left = 368
-      Top = 194
+      Top = 193
       Width = 32
       Height = 33
       Cursor = crHandPoint
@@ -911,7 +907,7 @@ object FRM_PRODUTO: TFRM_PRODUTO
     end
     object btn_cadastra_categoria: TBitBtn
       Left = 404
-      Top = 194
+      Top = 193
       Width = 32
       Height = 33
       Cursor = crHandPoint

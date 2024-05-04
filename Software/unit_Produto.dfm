@@ -764,7 +764,6 @@ object FRM_PRODUTO: TFRM_PRODUTO
       ParentFont = False
       ReadOnly = True
       TabOrder = 6
-      OnClick = txt_descricaocategClick
     end
     object btn_pesquisa_categoria: TBitBtn
       Left = 368
@@ -845,6 +844,7 @@ object FRM_PRODUTO: TFRM_PRODUTO
       Top = 256
       Width = 109
       Height = 33
+      BiDiMode = bdLeftToRight
       CharCase = ecUpperCase
       DataField = 'preco'
       DataSource = DM_Produto.ds_produto
@@ -853,6 +853,7 @@ object FRM_PRODUTO: TFRM_PRODUTO
       Font.Height = -19
       Font.Name = 'Microsoft New Tai Lue'
       Font.Style = []
+      ParentBiDiMode = False
       ParentFont = False
       TabOrder = 8
       OnKeyPress = txt_precoKeyPress

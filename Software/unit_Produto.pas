@@ -42,7 +42,6 @@ type
     procedure txt_nomeprodKeyPress(Sender: TObject; var Key: Char);
     procedure txt_precoKeyPress(Sender: TObject; var Key: Char);
     procedure btn_pesquisarClick(Sender: TObject);
-    procedure txt_descricaocategClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,6 +50,7 @@ type
 
 var
   FRM_PRODUTO: TFRM_PRODUTO;
+  DataAlteracao: TDateTime;
 
 implementation
 
@@ -123,9 +123,6 @@ begin
   if txt_codprod.Text <= '0' then
 
   else
-//  DM_Produto.produto.Append;
-//  txt_codcateg.Text := '';
-//  txt_descricaocateg.Text := '';
   novo;
 end;
 
@@ -187,6 +184,12 @@ begin
     else
     begin
       DM_Produto.produto.Edit;
+      DataAlteracao := Now;
+      DM_Produto.produto.FieldByName('dataalteracao').AsDateTime := DataAlteracao;
+      if (DM_Produto.produto.FieldByName('preco').AsFloat <> DM_Produto.produto.FieldByName('ultpreco').AsFloat) then
+        begin
+          DM_Produto.produto.FieldByName('ultpreco').AsFloat := DM_Produto.produto.FieldByName('preco').OldValue;
+        end;
       DM_Produto.produto.Post;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Produto editado com sucesso!';
       FRM_MENSAGEM.ShowModal;
@@ -202,11 +205,6 @@ end;
 procedure TFRM_PRODUTO.FormShow(Sender: TObject);
 begin
   Novo;
-end;
-
-procedure TFRM_PRODUTO.txt_descricaocategClick(Sender: TObject);
-begin
-  Pesquisa_Categoria;
 end;
 
 procedure TFRM_PRODUTO.txt_nomeprodChange(Sender: TObject);

@@ -39,9 +39,6 @@ type
     procedure txt_nomeprodChange(Sender: TObject);
     procedure btn_deletarClick(Sender: TObject);
     procedure btn_pesquisa_categoriaClick(Sender: TObject);
-    procedure txt_descricaocategClick(Sender: TObject);
-    procedure txt_descricaocategEnter(Sender: TObject);
-    procedure txt_descricaocategKeyPress(Sender: TObject; var Key: Char);
     procedure txt_nomeprodKeyPress(Sender: TObject; var Key: Char);
     procedure txt_precoKeyPress(Sender: TObject; var Key: Char);
     procedure btn_pesquisarClick(Sender: TObject);
@@ -53,6 +50,7 @@ type
 
 var
   FRM_PRODUTO: TFRM_PRODUTO;
+  DataAlteracao: TDateTime;
 
 implementation
 
@@ -75,15 +73,15 @@ begin
   DM_Categoria.pesquisar_categoria.Close;
   DM_Categoria.pesquisar_categoria.SQL.Clear;
   DM_Categoria.pesquisar_categoria.SQL.Add( 'SELECT '
-                                          + 'codcateg AS Código, '
-                                          + 'descricaocateg AS Descrição '
+                                          + 'c.codcateg AS Código, '
+                                          + 'c.descricaocateg AS Descrição '
                                           + 'FROM categoria c '
                                           + 'WHERE c.descricaocateg LIKE :Pesquisa_Categoria '
                                           + 'ORDER BY c.descricaocateg;');
   FRM_PESQUISAR.ShowModal;
   DM_Produto.produto.Edit;
   DM_Produto.produtocodcateg.AsInteger :=  DM_Categoria.pesquisar_categoria.FieldByName('Código').AsInteger;
-  //FRM_PRODUTO.txt_descricaocateg.Text := DM_Categoria.pesquisar_categoria.FieldByName('Descrição').AsString;
+  FRM_PRODUTO.txt_descricaocateg.Text := DM_Categoria.pesquisar_categoria.FieldByName('Descrição').AsString;
   //FRM_PRODUTO.txt_codcateg_produto.Text := FRM_PRODUTO.txt_codcateg.Text;
   FRM_PRODUTO.txt_preco.SetFocus;
 end;
@@ -125,9 +123,6 @@ begin
   if txt_codprod.Text <= '0' then
 
   else
-//  DM_Produto.produto.Append;
-//  txt_codcateg.Text := '';
-//  txt_descricaocateg.Text := '';
   novo;
 end;
 
@@ -189,6 +184,12 @@ begin
     else
     begin
       DM_Produto.produto.Edit;
+      DataAlteracao := Now;
+      DM_Produto.produto.FieldByName('dataalteracao').AsDateTime := DataAlteracao;
+      if txt_preco.Text <> txt_ultpreco.text then
+        begin
+           DM_Produto.produto.FieldByName('ultpreco').AsString := txt_preco.Text;
+        end;
       DM_Produto.produto.Post;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Produto editado com sucesso!';
       FRM_MENSAGEM.ShowModal;
@@ -203,23 +204,7 @@ end;
 
 procedure TFRM_PRODUTO.FormShow(Sender: TObject);
 begin
-    Novo;
-end;
-
-procedure TFRM_PRODUTO.txt_descricaocategClick(Sender: TObject);
-begin
-  Pesquisa_Categoria;
-end;
-
-procedure TFRM_PRODUTO.txt_descricaocategEnter(Sender: TObject);
-begin
-  Pesquisa_Categoria;
-end;
-
-procedure TFRM_PRODUTO.txt_descricaocategKeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  Pesquisa_Categoria;
+  Novo;
 end;
 
 procedure TFRM_PRODUTO.txt_nomeprodChange(Sender: TObject);
@@ -235,7 +220,8 @@ procedure TFRM_PRODUTO.txt_nomeprodKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    txt_descricaocateg.SetFocus;
+    //txt_descricaocateg.SetFocus;
+    btn_pesquisa_categoria.Click;
     Key := #0;
   end;
 end;
