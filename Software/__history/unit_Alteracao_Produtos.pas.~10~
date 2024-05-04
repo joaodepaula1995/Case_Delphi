@@ -19,8 +19,6 @@ type
     txt_porcentagem: TEdit;
     fd_atualizacao_produtos: TFDQuery;
     procedure btn_salvarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
-    procedure txt_porcentagemKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -66,33 +64,14 @@ begin
               end;
               FRM_MENSAGEM.lbl_mensagem.Caption := 'Alteração realizada com sucesso!';
               FRM_MENSAGEM.ShowModal;
-              txt_porcentagem.SetFocus;
             end
           else
           begin
             FRM_MENSAGEM.lbl_mensagem.Caption := 'Porcentagem inserida invalida!';
             FRM_MENSAGEM.ShowModal;
-            txt_porcentagem.Text := '';
-            txt_porcentagem.SetFocus;
           end;
         end;
     end;
   end;
 end;
-procedure TFRM_ALTERACAO_PRODUTOS.FormShow(Sender: TObject);
-begin
-  txt_porcentagem.SetFocus;
-end;
-
-procedure TFRM_ALTERACAO_PRODUTOS.txt_porcentagemKeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if Key = #13 then
-  begin
-    btn_salvar.SetFocus;
-    btn_salvar.Click;
-    Key := #0;
-  end;
-end;
-
 end.
