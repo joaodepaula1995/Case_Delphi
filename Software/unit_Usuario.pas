@@ -57,6 +57,15 @@ begin
   if txt_coduser.Text <= '0' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Localize o Usuário para deletar!';
+      FRM_MENSAGEM.img_aviso.Visible := True;
+      FRM_MENSAGEM.ShowModal;
+      btn_pesquisar.SetFocus;
+    end
+    else
+    if txt_coduser.Text = '1' then
+    begin
+      FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário padrão não pode ser excluído!';
+      FRM_MENSAGEM.img_aviso.Visible := True;
       FRM_MENSAGEM.ShowModal;
       btn_pesquisar.SetFocus;
     end
@@ -129,6 +138,14 @@ begin
       txt_emailuser.SetFocus;
     end
   else
+   if txt_coduser.Text = '1' then
+    begin
+      FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário padrão não pode ser editado!';
+      FRM_MENSAGEM.img_aviso.Visible := True;
+      FRM_MENSAGEM.ShowModal;
+      btn_pesquisar.SetFocus;
+    end
+    else
    if txt_coduser.Text <= '0' then
     begin
       DM_Usuario.usuario.Post;

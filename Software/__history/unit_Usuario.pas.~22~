@@ -23,6 +23,7 @@ type
     lbl_senhauser: TLabel;
     txt_emailuser: TDBEdit;
     lbl_emailuser: TLabel;
+    img_wallpaper: TImage;
     procedure txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
     procedure txt_senhauserKeyPress(Sender: TObject; var Key: Char);
     procedure txt_emailuserKeyPress(Sender: TObject; var Key: Char);
@@ -30,6 +31,10 @@ type
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_deletarClick(Sender: TObject);
+    procedure txt_nomeuserChange(Sender: TObject);
+    procedure txt_senhauserChange(Sender: TObject);
+    procedure txt_emailuserChange(Sender: TObject);
+    procedure btn_pesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,6 +70,7 @@ begin
         begin
           DM_Usuario.usuario.Delete;
           FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário deletado com sucesso!';
+          FRM_MENSAGEM.img_confirmacao.Visible := true;
           FRM_MENSAGEM.ShowModal;
           DM_Usuario.usuario.Append;
           txt_nomeuser.SetFocus;
@@ -81,11 +87,28 @@ begin
   DM_Usuario.usuario.Append;
 end;
 
+procedure TFRM_USUARIO.btn_pesquisarClick(Sender: TObject);
+begin
+  DM_Usuario.usuario.Cancel;
+  FRM_PESQUISAR.lbl_pesquisar.Caption := 'Pesquisar Usuário';
+  DM_Usuario.pesquisar_usuario.Close;
+  DM_Usuario.pesquisar_usuario.SQL.Clear;
+  DM_Usuario.pesquisar_usuario.SQL.Add( 'SELECT '
+                                      + 'u.coduser as Código, '
+                                      + 'u.nomeuser as Usuário, '
+                                      + 'u.emailuser as Email '
+                                      + 'FROM usuario u '
+                                      + 'WHERE u.nomeuser LIKE :Pesquisa_Usuario '
+                                      + 'ORDER BY u.nomeuser;');
+  FRM_PESQUISAR.ShowModal;
+end;
+
 procedure TFRM_USUARIO.btn_salvarClick(Sender: TObject);
 begin
   if txt_nomeuser.Text = '' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe o Usuário!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_nomeuser.SetFocus;
     end
@@ -93,6 +116,7 @@ begin
   if txt_senhauser.Text = '' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe a Senha!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_senhauser.SetFocus;
     end
@@ -100,6 +124,7 @@ begin
   if txt_emailuser.Text = '' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe o E-Mail!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_emailuser.SetFocus;
     end
@@ -108,6 +133,7 @@ begin
     begin
       DM_Usuario.usuario.Post;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário salvo com sucesso!';
+      FRM_MENSAGEM.img_confirmacao.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_nomeuser.SetFocus;
       DM_Usuario.usuario.Append;
@@ -116,8 +142,9 @@ begin
     begin
       DM_Usuario.usuario.Edit;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário editado com sucesso!';
+      FRM_MENSAGEM.img_confirmacao.Visible := true;
       FRM_MENSAGEM.ShowModal;
-      DM_Produto.produto.Post;
+      DM_Usuario.usuario.Post;
       txt_nomeuser.SetFocus;
       DM_Usuario.usuario.Append;
     end;
@@ -125,7 +152,17 @@ end;
 
 procedure TFRM_USUARIO.FormShow(Sender: TObject);
 begin
+  DM_Usuario.usuario.Append;
   txt_nomeuser.SetFocus;
+end;
+
+procedure TFRM_USUARIO.txt_emailuserChange(Sender: TObject);
+begin
+var
+  Limitar_Caracters_no_Campo: Integer;
+begin
+  Limitar_Caracters_no_Campo := 255;
+end;
 end;
 
 procedure TFRM_USUARIO.txt_emailuserKeyPress(Sender: TObject; var Key: Char);
@@ -137,6 +174,12 @@ begin
   end;
 end;
 
+procedure TFRM_USUARIO.txt_nomeuserChange(Sender: TObject);
+var
+  Limitar_Caracters_no_Campo: Integer;
+begin
+  Limitar_Caracters_no_Campo := 100;
+end;
 procedure TFRM_USUARIO.txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -144,6 +187,13 @@ begin
     txt_senhauser.SetFocus;
     Key := #0;
   end;
+end;
+
+procedure TFRM_USUARIO.txt_senhauserChange(Sender: TObject);
+var
+  Limitar_Caracters_no_Campo: Integer;
+begin
+  Limitar_Caracters_no_Campo := 100;
 end;
 
 procedure TFRM_USUARIO.txt_senhauserKeyPress(Sender: TObject; var Key: Char);

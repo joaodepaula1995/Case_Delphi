@@ -2706,7 +2706,7 @@ object FRM_MENSAGEM: TFRM_MENSAGEM
         B570}
     end
     object lbl_mensagem: TLabel
-      Left = 103
+      Left = 108
       Top = 49
       Width = 140
       Height = 28
