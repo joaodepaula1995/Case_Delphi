@@ -19,6 +19,7 @@ type
     lbl_descricao: TLabel;
     txt_descricaocateg: TDBEdit;
     txt_codcateg: TDBEdit;
+    img_wallpaper: TImage;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure txt_descricaocategKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);

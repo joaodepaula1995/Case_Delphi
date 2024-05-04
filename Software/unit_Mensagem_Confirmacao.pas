@@ -13,6 +13,7 @@ type
     img_aviso: TImage;
     BitBtn1: TBitBtn;
     BitBtn3: TBitBtn;
+    img_wallpaper: TImage;
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
   private

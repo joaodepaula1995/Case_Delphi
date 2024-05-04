@@ -15,6 +15,7 @@ type
     tbl_pesquisar: TDBGrid;
     btn_pesquisar: TBitBtn;
     ds_pesquisar: TDataSource;
+    img_wallpaper: TImage;
     procedure txt_pesquisarKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure btn_pesquisarClick(Sender: TObject);

@@ -13,6 +13,7 @@ type
     img_aviso: TImage;
     btn_ok: TBitBtn;
     img_confirmacao: TImage;
+    img_wallpaper: TImage;
     procedure btn_okClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private

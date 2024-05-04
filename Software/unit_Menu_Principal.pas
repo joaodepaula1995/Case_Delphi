@@ -22,6 +22,7 @@ type
     btn_alteracao_produtos: TImage;
     CalendarView: TCalendarView;
     btn_sair_menu: TImage;
+    img_wallpaper: TImage;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure tmr_horaTimer(Sender: TObject);

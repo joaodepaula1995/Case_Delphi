@@ -41,5 +41,39 @@
     <Transaction>2024/05/04 12:32:00.869,=C:\case_delphi\Software\Unit1.pas</Transaction>
     <Transaction>2024/05/04 12:32:34.398,C:\Case_Delphi\Software\unit_Relatorio_Produtos.dfm=C:\case_delphi\Software\Unit1.dfm</Transaction>
     <Transaction>2024/05/04 12:32:34.398,C:\Case_Delphi\Software\unit_Relatorio_Produtos.pas=C:\case_delphi\Software\Unit1.pas</Transaction>
-  </Transactions>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="unitDM_Categoria.pas"/>
+    <File Path="unitDM_Categoria.dfm"/>
+    <File Path="unitDM_Login.pas"/>
+    <File Path="unitDM_Login.dfm"/>
+    <File Path="unitDM_Pesquisa_Geral.pas"/>
+    <File Path="unitDM_Pesquisa_Geral.dfm"/>
+    <File Path="unitDM_Produto.pas"/>
+    <File Path="unitDM_Produto.dfm"/>
+    <File Path="unitDM_Usuario.pas"/>
+    <File Path="unitDM_Usuario.dfm"/>
+    <File Path="unitSQL_Login.pas"/>
+    <File Path="unit_Alteracao_Produtos.pas"/>
+    <File Path="unit_Alteracao_Produtos.dfm"/>
+    <File Path="unit_Categoria.pas"/>
+    <File Path="unit_Categoria.dfm"/>
+    <File Path="unit_Fecha_Sistema.pas"/>
+    <File Path="unit_Fecha_Sistema.dfm"/>
+    <File Path="unit_Login.pas"/>
+    <File Path="unit_Login.dfm"/>
+    <File Path="unit_Mensagem.pas"/>
+    <File Path="unit_Mensagem.dfm"/>
+    <File Path="unit_Mensagem_Confirmacao.pas"/>
+    <File Path="unit_Mensagem_Confirmacao.dfm"/>
+    <File Path="unit_Menu_Principal.pas"/>
+    <File Path="unit_Menu_Principal.dfm"/>
+    <File Path="unit_Pesquisar.pas"/>
+    <File Path="unit_Pesquisar.dfm"/>
+    <File Path="unit_Produto.pas"/>
+    <File Path="unit_Produto.dfm"/>
+    <File Path="unit_Relatorio_Produtos.pas"/>
+    <File Path="unit_Relatorio_Produtos.dfm"/>
+    <File Path="unit_Usuario.pas"/>
+    <File Path="unit_Usuario.dfm"/>
+  </ProjectSortOrder>
 </BorlandProject>

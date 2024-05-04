@@ -31,6 +31,7 @@ type
     lbl_dataalteracao: TLabel;
     txt_dataalteracao: TDBEdit;
     btn_cadastra_categoria: TBitBtn;
+    img_wallpaper: TImage;
     procedure btn_cadastra_categoriaClick(Sender: TObject);
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);

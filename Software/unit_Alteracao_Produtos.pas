@@ -19,6 +19,7 @@ type
     txt_porcentagem: TEdit;
     fd_atualizacao_produtos: TFDQuery;
     Label1: TLabel;
+    Image1: TImage;
     procedure btn_salvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure txt_porcentagemKeyPress(Sender: TObject; var Key: Char);

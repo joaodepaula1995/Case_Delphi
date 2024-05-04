@@ -23,6 +23,7 @@ type
     lbl_senhauser: TLabel;
     txt_emailuser: TDBEdit;
     lbl_emailuser: TLabel;
+    img_wallpaper: TImage;
     procedure txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
     procedure txt_senhauserKeyPress(Sender: TObject; var Key: Char);
     procedure txt_emailuserKeyPress(Sender: TObject; var Key: Char);
