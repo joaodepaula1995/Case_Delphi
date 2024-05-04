@@ -39,12 +39,10 @@ type
     procedure txt_nomeprodChange(Sender: TObject);
     procedure btn_deletarClick(Sender: TObject);
     procedure btn_pesquisa_categoriaClick(Sender: TObject);
-    procedure txt_descricaocategClick(Sender: TObject);
-    procedure txt_descricaocategEnter(Sender: TObject);
-    procedure txt_descricaocategKeyPress(Sender: TObject; var Key: Char);
     procedure txt_nomeprodKeyPress(Sender: TObject; var Key: Char);
     procedure txt_precoKeyPress(Sender: TObject; var Key: Char);
     procedure btn_pesquisarClick(Sender: TObject);
+    procedure txt_descricaocategClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,8 +73,8 @@ begin
   DM_Categoria.pesquisar_categoria.Close;
   DM_Categoria.pesquisar_categoria.SQL.Clear;
   DM_Categoria.pesquisar_categoria.SQL.Add( 'SELECT '
-                                          + 'codcateg AS Código, '
-                                          + 'descricaocateg AS Descrição '
+                                          + 'c.codcateg AS Código, '
+                                          + 'c.descricaocateg AS Descrição '
                                           + 'FROM categoria c '
                                           + 'WHERE c.descricaocateg LIKE :Pesquisa_Categoria '
                                           + 'ORDER BY c.descricaocateg;');
@@ -149,6 +147,13 @@ begin
                                           + 'WHERE p.nomeprod LIKE :Pesquisa_Produto '
                                           + 'ORDER BY p.nomeprod;');
   FRM_PESQUISAR.ShowModal;
+  if FRM_PESQUISAR.ModalResult = mrOk then
+    begin
+      DM_Produto.produto.Close;
+      DM_Produto.produto.Params[0].AsInteger := DM_Produto.pesquisar_produto.FieldByName('Código').AsInteger;
+      DM_Produto.produto.Open;
+      FRM_PESQUISAR.close;
+    end;
 end;
 
 procedure TFRM_PRODUTO.btn_pesquisa_categoriaClick(Sender: TObject);
@@ -181,7 +186,6 @@ begin
     end
     else
     begin
-    //Ajustar a edição do cadastro, não esta editando corretamente a categoria
       DM_Produto.produto.Edit;
       DM_Produto.produto.Post;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Produto editado com sucesso!';
@@ -202,18 +206,7 @@ end;
 
 procedure TFRM_PRODUTO.txt_descricaocategClick(Sender: TObject);
 begin
-  Pesquisa_Categoria;
-end;
-
-procedure TFRM_PRODUTO.txt_descricaocategEnter(Sender: TObject);
-begin
-  Pesquisa_Categoria;
-end;
-
-procedure TFRM_PRODUTO.txt_descricaocategKeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  Pesquisa_Categoria;
+  btn_pesquisa_categoria.Click;
 end;
 
 procedure TFRM_PRODUTO.txt_nomeprodChange(Sender: TObject);

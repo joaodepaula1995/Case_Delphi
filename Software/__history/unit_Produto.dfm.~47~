@@ -750,13 +750,12 @@ object FRM_PRODUTO: TFRM_PRODUTO
       TabOrder = 5
     end
     object txt_descricaocateg: TDBEdit
-      Left = 15
-      Top = 194
+      Left = 13
+      Top = 192
       Width = 349
       Height = 33
       CharCase = ecUpperCase
-      DataField = 'descricaocateg'
-      DataSource = DM_Categoria.ds_categoria
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
@@ -766,12 +765,10 @@ object FRM_PRODUTO: TFRM_PRODUTO
       ReadOnly = True
       TabOrder = 6
       OnClick = txt_descricaocategClick
-      OnEnter = txt_descricaocategEnter
-      OnKeyPress = txt_descricaocategKeyPress
     end
     object btn_pesquisa_categoria: TBitBtn
       Left = 368
-      Top = 194
+      Top = 193
       Width = 32
       Height = 33
       Cursor = crHandPoint
@@ -890,7 +887,6 @@ object FRM_PRODUTO: TFRM_PRODUTO
       Font.Height = -19
       Font.Name = 'Microsoft New Tai Lue'
       Font.Style = []
-      MaxLength = 10
       ParentFont = False
       TabOrder = 10
     end
@@ -907,13 +903,12 @@ object FRM_PRODUTO: TFRM_PRODUTO
       Font.Height = -19
       Font.Name = 'Microsoft New Tai Lue'
       Font.Style = []
-      MaxLength = 10
       ParentFont = False
       TabOrder = 11
     end
     object btn_cadastra_categoria: TBitBtn
       Left = 404
-      Top = 194
+      Top = 193
       Width = 32
       Height = 33
       Cursor = crHandPoint
@@ -985,37 +980,5 @@ object FRM_PRODUTO: TFRM_PRODUTO
       TabOrder = 12
       OnClick = btn_cadastra_categoriaClick
     end
-  end
-  object txt_codcateg: TDBEdit
-    Left = 669
-    Top = 8
-    Width = 65
-    Height = 33
-    DataField = 'codcateg'
-    DataSource = DM_Categoria.ds_categoria
-    Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Microsoft New Tai Lue'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 1
-  end
-  object txt_codcateg_produto: TDBEdit
-    Left = 669
-    Top = 47
-    Width = 65
-    Height = 33
-    DataField = 'codcateg'
-    DataSource = DM_Produto.ds_produto
-    Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Microsoft New Tai Lue'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 2
   end
 end
