@@ -14,7 +14,15 @@ type
   TDM_Produto = class(TDataModule)
     conexao: TFDConnection;
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
+    produto_OLD: TFDTable;
     ds_produto: TDataSource;
+    produto_OLDcodprod: TFDAutoIncField;
+    produto_OLDnomeprod: TStringField;
+    produto_OLDcodcateg: TIntegerField;
+    produto_OLDpreco: TFloatField;
+    produto_OLDultpreco: TFloatField;
+    produto_OLDdatacadastro: TDateTimeField;
+    produto_OLDdataalteracao: TDateTimeField;
     pesquisar_produto: TFDQuery;
     ds_pesquisar_produto: TDataSource;
     produto: TFDQuery;
@@ -26,16 +34,6 @@ type
     produtodatacadastro: TDateTimeField;
     produtodataalteracao: TDateTimeField;
     produtoCategoria: TStringField;
-    produtos_relatorio: TFDQuery;
-    FDAutoIncField1: TFDAutoIncField;
-    StringField1: TStringField;
-    IntegerField1: TIntegerField;
-    FloatField1: TFloatField;
-    FloatField2: TFloatField;
-    DateTimeField1: TDateTimeField;
-    DateTimeField2: TDateTimeField;
-    StringField2: TStringField;
-    ds_produtos_relatorio: TDataSource;
   private
     { Private declarations }
   public

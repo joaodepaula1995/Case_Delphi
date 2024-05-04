@@ -18,10 +18,55 @@ object DM_Produto: TDM_Produto
     Left = 144
     Top = 16
   end
+  object produto_OLD: TFDTable
+    Connection = conexao
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    Left = 32
+    Top = 80
+    object produto_OLDcodprod: TFDAutoIncField
+      FieldName = 'codprod'
+      Origin = 'codprod'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object produto_OLDnomeprod: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nomeprod'
+      Origin = 'nomeprod'
+      Size = 100
+    end
+    object produto_OLDcodcateg: TIntegerField
+      FieldName = 'codcateg'
+      Origin = 'codcateg'
+      Required = True
+    end
+    object produto_OLDpreco: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'preco'
+      Origin = 'preco'
+    end
+    object produto_OLDultpreco: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'ultpreco'
+      Origin = 'ultpreco'
+    end
+    object produto_OLDdatacadastro: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'datacadastro'
+      Origin = 'datacadastro'
+      EditMask = '##/##/####;1;_'
+    end
+    object produto_OLDdataalteracao: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'dataalteracao'
+      Origin = 'dataalteracao'
+      EditMask = '##/##/####;1;_'
+    end
+  end
   object ds_produto: TDataSource
     DataSet = produto
-    Left = 120
-    Top = 88
+    Left = 136
+    Top = 216
   end
   object pesquisar_produto: TFDQuery
     Connection = conexao
@@ -46,8 +91,8 @@ object DM_Produto: TDM_Produto
       'INNER JOIN categoria c '
       'ON p.codcateg = c.codcateg '
       'WHERE p.codprod = :codprod;')
-    Left = 40
-    Top = 88
+    Left = 56
+    Top = 216
     ParamData = <
       item
         Name = 'CODPROD'
@@ -114,8 +159,8 @@ object DM_Produto: TDM_Produto
       'INNER JOIN categoria c '
       'ON p.codcateg = c.codcateg '
       'WHERE p.codprod = :codprod;')
-    Left = 64
-    Top = 224
+    Left = 56
+    Top = 304
     ParamData = <
       item
         Name = 'CODPROD'
@@ -169,9 +214,9 @@ object DM_Produto: TDM_Produto
       Size = 100
     end
   end
-  object ds_produtos_relatorio: TDataSource
+  object ds_relatorio: TDataSource
     DataSet = produtos_relatorio
-    Left = 184
-    Top = 224
+    Left = 160
+    Top = 304
   end
 end

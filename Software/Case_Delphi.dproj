@@ -172,6 +172,10 @@
             <Form>FRM_ALTERACAO_PRODUTOS</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="unit_Relatorio_Produtos.pas">
+            <Form>FRM_RELATORIO_PRODUTOS</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

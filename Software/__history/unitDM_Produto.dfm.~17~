@@ -18,10 +18,55 @@ object DM_Produto: TDM_Produto
     Left = 144
     Top = 16
   end
+  object produto_OLD: TFDTable
+    Connection = conexao
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    Left = 32
+    Top = 80
+    object produto_OLDcodprod: TFDAutoIncField
+      FieldName = 'codprod'
+      Origin = 'codprod'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object produto_OLDnomeprod: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nomeprod'
+      Origin = 'nomeprod'
+      Size = 100
+    end
+    object produto_OLDcodcateg: TIntegerField
+      FieldName = 'codcateg'
+      Origin = 'codcateg'
+      Required = True
+    end
+    object produto_OLDpreco: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'preco'
+      Origin = 'preco'
+    end
+    object produto_OLDultpreco: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'ultpreco'
+      Origin = 'ultpreco'
+    end
+    object produto_OLDdatacadastro: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'datacadastro'
+      Origin = 'datacadastro'
+      EditMask = '##/##/####;1;_'
+    end
+    object produto_OLDdataalteracao: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'dataalteracao'
+      Origin = 'dataalteracao'
+      EditMask = '##/##/####;1;_'
+    end
+  end
   object ds_produto: TDataSource
     DataSet = produto
-    Left = 120
-    Top = 88
+    Left = 128
+    Top = 288
   end
   object pesquisar_produto: TFDQuery
     Connection = conexao
@@ -46,8 +91,8 @@ object DM_Produto: TDM_Produto
       'INNER JOIN categoria c '
       'ON p.codcateg = c.codcateg '
       'WHERE p.codprod = :codprod;')
-    Left = 40
-    Top = 88
+    Left = 48
+    Top = 288
     ParamData = <
       item
         Name = 'CODPROD'
@@ -100,78 +145,5 @@ object DM_Produto: TDM_Produto
       ReadOnly = True
       Size = 100
     end
-  end
-  object produtos_relatorio: TFDQuery
-    Active = True
-    Connection = conexao
-    UpdateOptions.AssignedValues = [uvUpdateMode]
-    UpdateOptions.UpdateMode = upWhereAll
-    SQL.Strings = (
-      'SELECT '
-      'p.*, '
-      'c.descricaocateg as Categoria '
-      'FROM produto p '
-      'INNER JOIN categoria c '
-      'ON p.codcateg = c.codcateg '
-      'WHERE p.codprod = :codprod;')
-    Left = 64
-    Top = 224
-    ParamData = <
-      item
-        Name = 'CODPROD'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
-    object FDAutoIncField1: TFDAutoIncField
-      FieldName = 'codprod'
-      Origin = 'codprod'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object StringField1: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nomeprod'
-      Origin = 'nomeprod'
-      Size = 100
-    end
-    object IntegerField1: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'codcateg'
-      Origin = 'codcateg'
-    end
-    object FloatField1: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'preco'
-      Origin = 'preco'
-    end
-    object FloatField2: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'ultpreco'
-      Origin = 'ultpreco'
-    end
-    object DateTimeField1: TDateTimeField
-      AutoGenerateValue = arDefault
-      FieldName = 'datacadastro'
-      Origin = 'datacadastro'
-    end
-    object DateTimeField2: TDateTimeField
-      AutoGenerateValue = arDefault
-      FieldName = 'dataalteracao'
-      Origin = 'dataalteracao'
-    end
-    object StringField2: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'Categoria'
-      Origin = 'descricaocateg'
-      ProviderFlags = [pfHidden]
-      ReadOnly = True
-      Size = 100
-    end
-  end
-  object ds_produtos_relatorio: TDataSource
-    DataSet = produtos_relatorio
-    Left = 184
-    Top = 224
   end
 end

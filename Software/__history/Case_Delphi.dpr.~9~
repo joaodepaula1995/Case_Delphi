@@ -17,8 +17,7 @@ uses
   unit_Usuario in 'unit_Usuario.pas' {FRM_USUARIO},
   unitDM_Usuario in 'unitDM_Usuario.pas' {DM_Usuario: TDataModule},
   unitDM_Pesquisa_Geral in 'unitDM_Pesquisa_Geral.pas' {DM_Pesquisa_Geral: TDataModule},
-  unit_Alteracao_Produtos in 'unit_Alteracao_Produtos.pas' {FRM_ALTERACAO_PRODUTOS},
-  unit_Relatorio_Produtos in 'unit_Relatorio_Produtos.pas' {FRM_RELATORIO_PRODUTOS};
+  unit_Alteracao_Produtos in 'unit_Alteracao_Produtos.pas' {FRM_ALTERACAO_PRODUTOS};
 
 {$R *.res}
 
@@ -41,6 +40,5 @@ begin
   Application.CreateForm(TDM_Usuario, DM_Usuario);
   Application.CreateForm(TDM_Pesquisa_Geral, DM_Pesquisa_Geral);
   Application.CreateForm(TFRM_ALTERACAO_PRODUTOS, FRM_ALTERACAO_PRODUTOS);
-  Application.CreateForm(TFRM_RELATORIO_PRODUTOS, FRM_RELATORIO_PRODUTOS);
   Application.Run;
 end.

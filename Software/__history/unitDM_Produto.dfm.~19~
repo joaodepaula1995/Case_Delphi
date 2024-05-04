@@ -169,9 +169,9 @@ object DM_Produto: TDM_Produto
       Size = 100
     end
   end
-  object ds_produtos_relatorio: TDataSource
+  object ds_relatorio: TDataSource
     DataSet = produtos_relatorio
-    Left = 184
+    Left = 168
     Top = 224
   end
 end

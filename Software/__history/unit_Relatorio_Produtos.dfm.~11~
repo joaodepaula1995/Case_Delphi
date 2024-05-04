@@ -1,0 +1,79 @@
+object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
+  Left = 0
+  Top = 0
+  Caption = 'FRM_RELATORIO_PRODUTOS'
+  ClientHeight = 774
+  ClientWidth = 783
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object rl_produtos_relatorio: TRLReport
+    Left = -8
+    Top = 0
+    Width = 794
+    Height = 1123
+    DataSource = DM_Produto.ds_produtos_relatorio
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    object RLBand1: TRLBand
+      Left = 38
+      Top = 81
+      Width = 718
+      Height = 51
+      object nomeprod: TRLDBText
+        Left = 3
+        Top = 24
+        Width = 66
+        Height = 17
+        DataField = 'nomeprod'
+        DataSource = DM_Produto.ds_produtos_relatorio
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Microsoft New Tai Lue'
+        Font.Style = []
+        ParentFont = False
+        Text = ''
+      end
+      object lbl_produto: TRLLabel
+        Left = 3
+        Top = 3
+        Width = 61
+        Height = 20
+        Caption = 'Produto'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Microsoft New Tai Lue'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+    end
+    object RLBand2: TRLBand
+      Left = 38
+      Top = 38
+      Width = 718
+      Height = 43
+      object RLLabel1: TRLLabel
+        Left = 11
+        Top = 11
+        Width = 201
+        Height = 25
+        Caption = 'Relat'#243'rio de Produtos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -19
+        Font.Name = 'Microsoft New Tai Lue'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+    end
+  end
+end
