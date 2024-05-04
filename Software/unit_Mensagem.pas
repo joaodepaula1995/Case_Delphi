@@ -12,7 +12,9 @@ type
     pn_wallpaper_esquerda: TPanel;
     img_aviso: TImage;
     btn_ok: TBitBtn;
+    img_confirmacao: TImage;
     procedure btn_okClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     { Private declarations }
   public
@@ -29,6 +31,12 @@ implementation
 procedure TFRM_MENSAGEM.btn_okClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TFRM_MENSAGEM.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  img_aviso.Visible := false;
+  img_confirmacao.Visible := false;
 end;
 
 end.

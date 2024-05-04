@@ -82,7 +82,6 @@ begin
   DM_Produto.produto.Edit;
   DM_Produto.produtocodcateg.AsInteger :=  DM_Categoria.pesquisar_categoria.FieldByName('Código').AsInteger;
   FRM_PRODUTO.txt_descricaocateg.Text := DM_Categoria.pesquisar_categoria.FieldByName('Descrição').AsString;
-  //FRM_PRODUTO.txt_codcateg_produto.Text := FRM_PRODUTO.txt_codcateg.Text;
   FRM_PRODUTO.txt_preco.SetFocus;
 end;
 
@@ -98,6 +97,7 @@ begin
   if txt_codprod.Text <= '0' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Localize o Produto para deletar!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
       btn_pesquisar.SetFocus;
     end
@@ -111,6 +111,7 @@ begin
         begin
           DM_Produto.produto.Delete;
           FRM_MENSAGEM.lbl_mensagem.Caption := 'Produto deletado com sucesso!';
+          FRM_MENSAGEM.img_confirmacao.Visible := true;
           FRM_MENSAGEM.ShowModal;
           Novo;
         end;
@@ -163,6 +164,7 @@ begin
   if txt_nomeprod.Text = '' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe o Nome do Produto!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_nomeprod.SetFocus;
     end
@@ -170,14 +172,24 @@ begin
   if txt_descricaocateg.Text = '' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe a Categoria!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
-      txt_descricaocateg.SetFocus;
+      btn_pesquisa_categoria.Click;
+    end
+  else
+  if txt_preco.Text = '' then
+    begin
+      FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe o Preço do Produto!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
+      FRM_MENSAGEM.ShowModal;
+      txt_preco.SetFocus;
     end
   else
    if txt_codprod.Text <= '0' then
     begin
       DM_Produto.produto.Post;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Produto salvo com sucesso!';
+      FRM_MENSAGEM.img_confirmacao.Visible := true;
       FRM_MENSAGEM.ShowModal;
       Novo;
     end
@@ -192,6 +204,8 @@ begin
         end;
       DM_Produto.produto.Post;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Produto editado com sucesso!';
+      FRM_MENSAGEM.img_confirmacao.Visible := true;
+      FRM_MENSAGEM.img_aviso.Visible := false;
       FRM_MENSAGEM.ShowModal;
       Novo;
     end;

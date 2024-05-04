@@ -24,6 +24,7 @@ type
     procedure txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
     procedure txt_senhauserKeyPress(Sender: TObject; var Key: Char);
     procedure btn_entrarClick(Sender: TObject);
+    procedure lbl_esqueceu_senhaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -103,6 +104,12 @@ begin
   end;
 
 end;
+procedure TFRM_LOGIN.lbl_esqueceu_senhaClick(Sender: TObject);
+begin
+  FRM_MENSAGEM.lbl_mensagem.Caption := 'Entre em contato com o Suporte!';
+  FRM_MENSAGEM.ShowModal;
+end;
+
 procedure TFRM_LOGIN.txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then

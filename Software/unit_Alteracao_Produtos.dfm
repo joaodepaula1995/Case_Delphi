@@ -44,9 +44,25 @@ object FRM_ALTERACAO_PRODUTOS: TFRM_ALTERACAO_PRODUTOS
     object lbl_informe: TLabel
       Left = 15
       Top = 79
-      Width = 102
+      Width = 718
       Height = 25
-      Caption = 'Informe a %'
+      Caption = 
+        'Informe o valor correspondente a porcentagem para altera'#231#227'o do c' +
+        'usto dos produtos'
+      Color = 8409658
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -19
+      Font.Name = 'Microsoft New Tai Lue'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 123
+      Top = 110
+      Width = 5
+      Height = 25
       Color = 8409658
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack

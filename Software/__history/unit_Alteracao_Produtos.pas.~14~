@@ -1,0 +1,100 @@
+unit unit_Alteracao_Produtos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.WinXCalendars, Vcl.Mask, Vcl.DBCtrls, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TFRM_ALTERACAO_PRODUTOS = class(TForm)
+    pn_wallpaper: TPanel;
+    lbl_alteracao: TLabel;
+    btn_salvar: TBitBtn;
+    lbl_informe: TLabel;
+    txt_porcentagem: TEdit;
+    fd_atualizacao_produtos: TFDQuery;
+    Label1: TLabel;
+    procedure btn_salvarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure txt_porcentagemKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_ALTERACAO_PRODUTOS: TFRM_ALTERACAO_PRODUTOS;
+
+implementation
+
+uses
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unit_Pesquisar, unit_Categoria, unitDM_Produto,
+  unit_Produto;
+
+{$R *.dfm}
+
+procedure TFRM_ALTERACAO_PRODUTOS.btn_salvarClick(Sender: TObject);
+var
+  Porcentagem: Double;
+begin
+  begin
+      try
+        FRM_MENSAGEM_CONFIRMACAO.lbl_mensagem.Caption := 'Deseja continuar com a alteração?';
+        FRM_MENSAGEM_CONFIRMACAO.ShowModal;
+      finally
+        if FRM_MENSAGEM_CONFIRMACAO.CONFIRMACAO = 'S' then
+          begin
+            if TryStrToFloat(txt_porcentagem.Text, Porcentagem) then
+            begin
+              fd_atualizacao_produtos := TFDQuery.Create(nil);
+              try
+                fd_atualizacao_produtos.Connection := DM_produto.conexao;
+                fd_atualizacao_produtos.SQL.Text :=  'UPDATE case_delphi.produto ' +
+                                        'SET ultpreco = ROUND(preco, 2), ' +
+                                        'preco = ROUND(preco * (1 + (:Porcentagem / 100)), 2), ' +
+                                        'dataalteracao = NOW()';
+                fd_atualizacao_produtos.Params.Clear;
+                fd_atualizacao_produtos.Params.CreateParam(ftFloat, 'Porcentagem', ptInput).AsFloat := Porcentagem;
+                fd_atualizacao_produtos.ExecSQL;
+                finally
+                fd_atualizacao_produtos.Free;
+              end;
+              FRM_MENSAGEM.lbl_mensagem.Caption := 'Alteração realizada com sucesso!';
+              FRM_MENSAGEM.img_aviso.Visible := false;
+              FRM_MENSAGEM.ShowModal;
+              txt_porcentagem.SetFocus;
+            end
+          else
+          begin
+            FRM_MENSAGEM.lbl_mensagem.Caption := 'Porcentagem inserida invalida!';
+            FRM_MENSAGEM.ShowModal;
+            txt_porcentagem.Text := '';
+            txt_porcentagem.SetFocus;
+          end;
+        end;
+    end;
+  end;
+end;
+procedure TFRM_ALTERACAO_PRODUTOS.FormShow(Sender: TObject);
+begin
+  txt_porcentagem.SetFocus;
+end;
+
+procedure TFRM_ALTERACAO_PRODUTOS.txt_porcentagemKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    btn_salvar.SetFocus;
+    btn_salvar.Click;
+    Key := #0;
+  end;
+end;
+
+end.

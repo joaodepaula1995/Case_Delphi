@@ -18,6 +18,7 @@ type
     lbl_informe: TLabel;
     txt_porcentagem: TEdit;
     fd_atualizacao_produtos: TFDQuery;
+    Label1: TLabel;
     procedure btn_salvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure txt_porcentagemKeyPress(Sender: TObject; var Key: Char);
@@ -65,12 +66,14 @@ begin
                 fd_atualizacao_produtos.Free;
               end;
               FRM_MENSAGEM.lbl_mensagem.Caption := 'Alteração realizada com sucesso!';
+              FRM_MENSAGEM.img_confirmacao.Visible := true;
               FRM_MENSAGEM.ShowModal;
               txt_porcentagem.SetFocus;
             end
           else
           begin
             FRM_MENSAGEM.lbl_mensagem.Caption := 'Porcentagem inserida invalida!';
+            FRM_MENSAGEM.img_aviso.Visible := true;
             FRM_MENSAGEM.ShowModal;
             txt_porcentagem.Text := '';
             txt_porcentagem.SetFocus;

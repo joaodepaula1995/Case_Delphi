@@ -1,0 +1,132 @@
+unit unit_Login;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TFRM_LOGIN = class(TForm)
+    pn_wallpaper_direita: TPanel;
+    pn_wallpaper_esquerda: TPanel;
+    lbl_bem_vindo: TLabel;
+    lbl_usuario: TLabel;
+    lbl_usuario_logado: TLabel;
+    txt_nomeuser: TEdit;
+    txt_senhauser: TEdit;
+    lbl_esqueceu_senha: TLabel;
+    btn_entrar: TBitBtn;
+    btn_sair: TBitBtn;
+    img_user: TImage;
+    img_senha: TImage;
+    procedure btn_sairClick(Sender: TObject);
+    procedure txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
+    procedure txt_senhauserKeyPress(Sender: TObject; var Key: Char);
+    procedure btn_entrarClick(Sender: TObject);
+    procedure lbl_esqueceu_senhaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_LOGIN: TFRM_LOGIN;
+
+implementation
+
+uses
+  unit_Fecha_Sistema, unit_Mensagem, unitDM_Login, unitSQL_Login, unit_Menu_Principal;
+
+{$R *.dfm}
+
+procedure TFRM_LOGIN.btn_entrarClick(Sender: TObject);
+    var
+    nomeuser: String;
+    senhauser: String;
+
+    FRM_MENSAGEM: TFRM_MENSAGEM;
+begin
+  nomeuser := txt_nomeuser.Text;
+  senhauser := txt_senhauser.Text;
+
+  FRM_MENSAGEM := TFRM_MENSAGEM.Create(Self);
+  if nomeuser.IsEmpty then
+    begin
+      try
+        FRM_MENSAGEM.lbl_mensagem.Caption := 'Por favor, informe o usuário!';
+        FRM_MENSAGEM.ShowModal;
+      finally
+        FRM_MENSAGEM.Free;
+        txt_nomeuser.SetFocus;
+      end;
+      Exit;
+    end;
+  if senhauser.IsEmpty then
+    begin
+      try
+        FRM_MENSAGEM.lbl_mensagem.Caption := 'Por favor, informe a senha!';
+        FRM_MENSAGEM.ShowModal;
+      finally
+      FRM_MENSAGEM.Free;
+        txt_senhauser.SetFocus;
+      end;
+      Exit;
+    end;
+
+  DM_Login.fd_login.SQL.Text := SQL_LOGIN;
+  DM_Login.fd_login.ParamByName('NOMEUSER').AsString := nomeuser;
+  DM_Login.fd_login.Open;
+  begin
+
+    senhauser := VarToStr(DM_Login.fd_login.FieldByName('SENHA').Value);
+    if (txt_senhauser.Text = senhauser) then
+      begin
+        Self.Hide;
+        FRM_MENU_PRINCIPAL.lbl_usuario_logado.Caption := 'Usuário: ' + txt_nomeuser.Text;
+        FRM_MENU_PRINCIPAL.ShowModal;
+        Exit;
+      end;
+    FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário ou Senha incorreto(s)!';
+    FRM_MENSAGEM.ShowModal;
+  end;
+
+end;
+
+procedure TFRM_LOGIN.btn_sairClick(Sender: TObject);
+begin
+  try
+    FRM_FECHA_SISTEMA.lbl_mensagem.Caption := 'Deseja realmente sair do sistema?';
+    FRM_FECHA_SISTEMA.ShowModal;
+  finally
+
+  end;
+
+end;
+procedure TFRM_LOGIN.lbl_esqueceu_senhaClick(Sender: TObject);
+begin
+  FRM_MENSAGEM.lbl_mensagem.Caption := 'Entre em contato com o Suporte!';
+  FRM_MENSAGEM.ShowModal;
+end;
+
+procedure TFRM_LOGIN.txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    txt_senhauser.SetFocus;
+    Key := #0;
+  end;
+end;
+
+procedure TFRM_LOGIN.txt_senhauserKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    btn_entrar.SetFocus;
+    btn_entrar.Click;
+    Key := #0;
+  end;
+end;
+
+end.

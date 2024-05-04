@@ -69,6 +69,7 @@ begin
         begin
           DM_Usuario.usuario.Delete;
           FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário deletado com sucesso!';
+          FRM_MENSAGEM.img_confirmacao.Visible := true;
           FRM_MENSAGEM.ShowModal;
           DM_Usuario.usuario.Append;
           txt_nomeuser.SetFocus;
@@ -106,6 +107,7 @@ begin
   if txt_nomeuser.Text = '' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe o Usuário!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_nomeuser.SetFocus;
     end
@@ -113,6 +115,7 @@ begin
   if txt_senhauser.Text = '' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe a Senha!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_senhauser.SetFocus;
     end
@@ -120,6 +123,7 @@ begin
   if txt_emailuser.Text = '' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Informe o E-Mail!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_emailuser.SetFocus;
     end
@@ -128,6 +132,7 @@ begin
     begin
       DM_Usuario.usuario.Post;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário salvo com sucesso!';
+      FRM_MENSAGEM.img_confirmacao.Visible := true;
       FRM_MENSAGEM.ShowModal;
       txt_nomeuser.SetFocus;
       DM_Usuario.usuario.Append;
@@ -136,6 +141,7 @@ begin
     begin
       DM_Usuario.usuario.Edit;
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário editado com sucesso!';
+      FRM_MENSAGEM.img_confirmacao.Visible := true;
       FRM_MENSAGEM.ShowModal;
       DM_Usuario.usuario.Post;
       txt_nomeuser.SetFocus;

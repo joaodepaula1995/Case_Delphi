@@ -44,7 +44,7 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
       object lbl_produto: TRLLabel
         Left = 60
         Top = -1
-        Width = 113
+        Width = 131
         Height = 20
         Caption = 'Produto'
         Font.Charset = ANSI_CHARSET
@@ -55,7 +55,7 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         ParentFont = False
       end
       object lbl_categoria: TRLLabel
-        Left = 177
+        Left = 197
         Top = -1
         Width = 90
         Height = 20
@@ -68,10 +68,11 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         ParentFont = False
       end
       object lbl_preco: TRLLabel
-        Left = 271
+        Left = 291
         Top = -1
         Width = 58
         Height = 20
+        Alignment = taRightJustify
         Caption = 'Pre'#231'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -81,10 +82,11 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         ParentFont = False
       end
       object lbl_ultimo_preco: TRLLabel
-        Left = 333
+        Left = 353
         Top = -1
         Width = 95
         Height = 20
+        Alignment = taRightJustify
         Caption = 'Ultimo Pre'#231'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -94,7 +96,7 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         ParentFont = False
       end
       object lbl_data_alteracao: TRLLabel
-        Left = 432
+        Left = 452
         Top = -1
         Width = 129
         Height = 20
@@ -107,7 +109,7 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         ParentFont = False
       end
       object lbl_data_cadastro: TRLLabel
-        Left = 565
+        Left = 585
         Top = -1
         Width = 131
         Height = 20
@@ -146,16 +148,16 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
       Width = 718
       Height = 31
       object codprod: TRLDBText
-        Left = 3
+        Left = 6
         Top = 6
-        Width = 55
+        Width = 48
         Height = 17
         Alignment = taCenter
         DataField = 'codprod'
         DataSource = DM_Produto.ds_produtos_relatorio
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Microsoft New Tai Lue'
         Font.Style = []
         ParentFont = False
@@ -164,67 +166,67 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
       object nomeprod: TRLDBText
         Left = 62
         Top = 6
-        Width = 111
+        Width = 127
         Height = 17
         DataField = 'nomeprod'
         DataSource = DM_Produto.ds_produtos_relatorio
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Microsoft New Tai Lue'
         Font.Style = []
         ParentFont = False
         Text = ''
       end
       object preco: TRLDBText
-        Left = 333
+        Left = 291
         Top = 6
-        Width = 95
+        Width = 58
         Height = 17
-        Alignment = taCenter
+        Alignment = taRightJustify
         DataField = 'preco'
         DataSource = DM_Produto.ds_produtos_relatorio
         DisplayMask = 'R$: ###.###,##'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Microsoft New Tai Lue'
         Font.Style = []
         ParentFont = False
         Text = ''
       end
       object dataalterecao: TRLDBText
-        Left = 432
+        Left = 450
         Top = 6
-        Width = 131
+        Width = 129
         Height = 17
         DataField = 'dataalteracao'
         DataSource = DM_Produto.ds_produtos_relatorio
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Microsoft New Tai Lue'
         Font.Style = []
         ParentFont = False
         Text = ''
       end
       object datacadastro: TRLDBText
-        Left = 567
+        Left = 585
         Top = 7
-        Width = 131
+        Width = 130
         Height = 17
         DataField = 'datacadastro'
         DataSource = DM_Produto.ds_produtos_relatorio
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Microsoft New Tai Lue'
         Font.Style = []
         ParentFont = False
         Text = ''
       end
       object categoria: TRLDBText
-        Left = 177
+        Left = 195
         Top = 6
         Width = 90
         Height = 17
@@ -232,24 +234,24 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         DataSource = DM_Produto.ds_produtos_relatorio
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Microsoft New Tai Lue'
         Font.Style = []
         ParentFont = False
         Text = ''
       end
       object ultpreco: TRLDBText
-        Left = 271
+        Left = 355
         Top = 6
-        Width = 58
+        Width = 91
         Height = 17
-        Alignment = taCenter
+        Alignment = taRightJustify
         DataField = 'ultpreco'
         DataSource = DM_Produto.ds_produtos_relatorio
         DisplayMask = 'R$: ###.###,##'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Microsoft New Tai Lue'
         Font.Style = []
         ParentFont = False
