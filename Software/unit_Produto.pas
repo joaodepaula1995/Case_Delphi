@@ -43,6 +43,8 @@ type
     procedure txt_nomeprodKeyPress(Sender: TObject; var Key: Char);
     procedure txt_precoKeyPress(Sender: TObject; var Key: Char);
     procedure btn_pesquisarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -215,6 +217,18 @@ end;
 procedure TFRM_PRODUTO.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   close;
+end;
+
+procedure TFRM_PRODUTO.FormCreate(Sender: TObject);
+begin
+  KeyPreview := True;
+end;
+
+procedure TFRM_PRODUTO.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_ESCAPE then
+  Close;
 end;
 
 procedure TFRM_PRODUTO.FormShow(Sender: TObject);

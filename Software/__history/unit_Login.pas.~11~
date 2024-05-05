@@ -1,4 +1,4 @@
-unit unitLogin;
+unit unit_Login;
 
 interface
 
@@ -8,22 +8,22 @@ uses
 
 type
   TFRM_LOGIN = class(TForm)
-    pn_wallpaper_direita: TPanel;
-    pn_wallpaper_esquerda: TPanel;
-    lbl_bem_vindo: TLabel;
-    lbl_usuario: TLabel;
-    lbl_senha: TLabel;
-    txt_nomeuser: TEdit;
-    txt_senhauser: TEdit;
-    lbl_esqueceu_senha: TLabel;
+    img_wallpaper: TImage;
     btn_entrar: TBitBtn;
     btn_sair: TBitBtn;
-    img_user: TImage;
     img_senha: TImage;
+    img_user: TImage;
+    lbl_esqueceu_senha: TLabel;
+    lbl_usuario: TLabel;
+    lbl_usuario_logado: TLabel;
+    txt_nomeuser: TEdit;
+    txt_senhauser: TEdit;
     procedure btn_sairClick(Sender: TObject);
     procedure txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
     procedure txt_senhauserKeyPress(Sender: TObject; var Key: Char);
     procedure btn_entrarClick(Sender: TObject);
+    procedure lbl_esqueceu_senhaClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,7 +36,7 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unit_Mensagem, unitDM_Login, unitSQL_Login;
+  unit_Fecha_Sistema, unit_Mensagem, unitDM_Login, unitSQL_Login, unit_Menu_Principal;
 
 {$R *.dfm}
 
@@ -55,6 +55,7 @@ begin
     begin
       try
         FRM_MENSAGEM.lbl_mensagem.Caption := 'Por favor, informe o usuário!';
+        FRM_MENSAGEM.img_aviso.Visible := true;
         FRM_MENSAGEM.ShowModal;
       finally
         FRM_MENSAGEM.Free;
@@ -66,6 +67,7 @@ begin
     begin
       try
         FRM_MENSAGEM.lbl_mensagem.Caption := 'Por favor, informe a senha!';
+        FRM_MENSAGEM.img_aviso.Visible := true;
         FRM_MENSAGEM.ShowModal;
       finally
       FRM_MENSAGEM.Free;
@@ -83,11 +85,12 @@ begin
     if (txt_senhauser.Text = senhauser) then
       begin
         Self.Hide;
-//        FRM_MENSAGEM.lbl_mensagem.Caption := 'Abriu o Menu Principal!';
-//        FRM_MENSAGEM.ShowModal;
+        FRM_MENU_PRINCIPAL.lbl_usuario_logado.Caption := 'Usuário: ' + txt_nomeuser.Text;
+        FRM_MENU_PRINCIPAL.ShowModal;
         Exit;
       end;
     FRM_MENSAGEM.lbl_mensagem.Caption := 'Usuário ou Senha incorreto(s)!';
+    FRM_MENSAGEM.img_aviso.Visible := true;
     FRM_MENSAGEM.ShowModal;
   end;
 
@@ -103,6 +106,18 @@ begin
   end;
 
 end;
+procedure TFRM_LOGIN.FormShow(Sender: TObject);
+begin
+  txt_nomeuser.SetFocus;
+end;
+
+procedure TFRM_LOGIN.lbl_esqueceu_senhaClick(Sender: TObject);
+begin
+  FRM_MENSAGEM.lbl_mensagem.Caption := 'Entre em contato com o Suporte!';
+  FRM_MENSAGEM.img_aviso.Visible := true;
+  FRM_MENSAGEM.ShowModal;
+end;
+
 procedure TFRM_LOGIN.txt_nomeuserKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -117,6 +132,7 @@ begin
   if Key = #13 then
   begin
     btn_entrar.SetFocus;
+    btn_entrar.Click;
     Key := #0;
   end;
 end;

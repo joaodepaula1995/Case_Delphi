@@ -15,6 +15,8 @@ object FRM_PESQUISAR: TFRM_PESQUISAR
   Position = poScreenCenter
   Scaled = False
   OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   OnShow = FormShow
   TextHeight = 15
   object pn_wallpaper: TPanel

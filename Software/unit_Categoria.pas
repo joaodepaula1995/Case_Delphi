@@ -28,6 +28,8 @@ type
     procedure btn_deletarClick(Sender: TObject);
     procedure btn_pesquisarClick(Sender: TObject);
     procedure txt_descricaocategChange(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -129,6 +131,18 @@ end;
 procedure TFRM_CATEGORIA.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   close;
+end;
+
+procedure TFRM_CATEGORIA.FormCreate(Sender: TObject);
+begin
+  KeyPreview := True;
+end;
+
+procedure TFRM_CATEGORIA.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_ESCAPE then
+  Close;
 end;
 
 procedure TFRM_CATEGORIA.FormShow(Sender: TObject);

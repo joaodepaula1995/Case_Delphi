@@ -35,6 +35,8 @@ type
     procedure txt_senhauserChange(Sender: TObject);
     procedure txt_emailuserChange(Sender: TObject);
     procedure btn_pesquisarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -165,6 +167,18 @@ begin
       txt_nomeuser.SetFocus;
       DM_Usuario.usuario.Append;
     end;
+end;
+
+procedure TFRM_USUARIO.FormCreate(Sender: TObject);
+begin
+  KeyPreview := True;
+end;
+
+procedure TFRM_USUARIO.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_ESCAPE then
+  Close;
 end;
 
 procedure TFRM_USUARIO.FormShow(Sender: TObject);

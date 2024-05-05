@@ -22,12 +22,16 @@ type
     btn_alteracao_produtos: TImage;
     CalendarView: TCalendarView;
     btn_sair_menu: TImage;
+    img_wallpaper: TImage;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure tmr_horaTimer(Sender: TObject);
     procedure btn_sair_menuClick(Sender: TObject);
     procedure btn_categoriasClick(Sender: TObject);
     procedure btn_produtosClick(Sender: TObject);
+    procedure btn_usuarioClick(Sender: TObject);
+    procedure btn_alteracao_produtosClick(Sender: TObject);
+    procedure btn_relatorioClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,9 +44,15 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unit_Produto;
+  unit_Fecha_Sistema, unit_Produto, unit_Usuario, unit_Alteracao_Produtos, unit_Relatorio_Produtos, unitDM_Produto, unit_Mensagem_Confirmacao;
 
 {$R *.dfm}
+
+procedure TFRM_MENU_PRINCIPAL.btn_alteracao_produtosClick(Sender: TObject);
+begin
+  FRM_ALTERACAO_PRODUTOS := TFRM_ALTERACAO_PRODUTOS.Create(Self);
+  FRM_ALTERACAO_PRODUTOS.ShowModal;
+end;
 
 procedure TFRM_MENU_PRINCIPAL.btn_categoriasClick(Sender: TObject);
 begin
@@ -56,12 +66,47 @@ begin
   FRM_PRODUTO.ShowModal;
 end;
 
+procedure TFRM_MENU_PRINCIPAL.btn_relatorioClick(Sender: TObject);
+begin
+  try
+    FRM_MENSAGEM_CONFIRMACAO.lbl_mensagem.Caption := 'Deseja visualizar o Relátorio?';
+    FRM_MENSAGEM_CONFIRMACAO.ShowModal;
+  finally
+  if FRM_MENSAGEM_CONFIRMACAO.CONFIRMACAO = 'S' then
+  begin
+    DM_Produto.produtos_relatorio.Close;
+    DM_Produto.produtos_relatorio.SQL.Clear;
+    DM_Produto.produtos_relatorio.SQL.Add('SELECT '
+                                        + 'p.codprod, '
+                                        + 'p.nomeprod, '
+                                        + 'p.preco, '
+                                        + 'p.ultpreco, '
+                                        + 'c.codcateg, '
+                                        + 'c.descricaocateg as categoria, '
+                                        + 'p.datacadastro, '
+                                        + 'p.dataalteracao '
+                                        + 'FROM produto p '
+                                        + 'INNER JOIN categoria c '
+                                        + 'ON p.codcateg = c.codcateg '
+                                        + 'ORDER BY p.nomeprod;');
+    DM_Produto.produtos_relatorio.Open;
+    FRM_RELATORIO_PRODUTOS.rl_produtos_relatorio.Preview();
+  end;
+  end;
+end;
+
 procedure TFRM_MENU_PRINCIPAL.btn_sair_menuClick(Sender: TObject);
   var CanClose: Boolean;
 begin
   FRM_FECHA_SISTEMA.lbl_mensagem.Caption := 'Deseja realmente sair do sistema?';
   if FRM_FECHA_SISTEMA.ShowModal = mrCancel then
     CanClose := false;
+end;
+
+procedure TFRM_MENU_PRINCIPAL.btn_usuarioClick(Sender: TObject);
+begin
+  FRM_USUARIO := TFRM_USUARIO.Create(Self);
+  FRM_USUARIO.ShowModal;
 end;
 
 procedure TFRM_MENU_PRINCIPAL.FormCloseQuery(Sender: TObject;

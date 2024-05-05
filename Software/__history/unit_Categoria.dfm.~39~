@@ -15,8 +15,6 @@ object FRM_CATEGORIA: TFRM_CATEGORIA
   Position = poScreenCenter
   Scaled = False
   OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
-  OnKeyDown = FormKeyDown
   OnShow = FormShow
   TextHeight = 15
   object pn_wallpaper: TPanel

@@ -25,7 +25,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure txt_porcentagemKeyPress(Sender: TObject; var Key: Char);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -86,11 +85,6 @@ begin
     end;
   end;
 end;
-procedure TFRM_ALTERACAO_PRODUTOS.FormCreate(Sender: TObject);
-begin
-  KeyPreview := True;
-end;
-
 procedure TFRM_ALTERACAO_PRODUTOS.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin

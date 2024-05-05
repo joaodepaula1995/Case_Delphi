@@ -22,6 +22,8 @@ type
     procedure tbl_pesquisarDblClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure tbl_pesquisarKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -106,6 +108,18 @@ end;
 procedure TFRM_PESQUISAR.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   tbl_pesquisar.DataSource := nil;
+end;
+
+procedure TFRM_PESQUISAR.FormCreate(Sender: TObject);
+begin
+  KeyPreview := True;
+end;
+
+procedure TFRM_PESQUISAR.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_ESCAPE then
+  Close;
 end;
 
 procedure TFRM_PESQUISAR.FormShow(Sender: TObject);

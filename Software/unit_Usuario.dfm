@@ -14,6 +14,8 @@ object FRM_USUARIO: TFRM_USUARIO
   Font.Style = []
   Position = poScreenCenter
   Scaled = False
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   OnShow = FormShow
   TextHeight = 15
   object pn_wallpaper: TPanel
