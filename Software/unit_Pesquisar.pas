@@ -21,7 +21,7 @@ type
     procedure btn_pesquisarClick(Sender: TObject);
     procedure tbl_pesquisarDblClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure FormCreate(Sender: TObject);
+    procedure tbl_pesquisarKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -34,9 +34,31 @@ var
 implementation
 
 uses
-  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unitDM_Usuario, unitDM_Produto, unit_Produto, unitDM_Pesquisa_Geral;
+  unit_Fecha_Sistema, unitDM_Categoria, unit_Mensagem, unit_Mensagem_Confirmacao, unitDM_Usuario, unitDM_Produto, unit_Produto, unitDM_Pesquisa_Geral, unit_Usuario, unit_Categoria;
 
 {$R *.dfm}
+
+procedure Pesquisar;
+begin
+    begin
+  if FRM_PESQUISAR.lbl_pesquisar.Caption = 'Pesquisar Categoria' then
+    begin
+      DM_Categoria.categoria.Locate('codcateg', DM_Categoria.pesquisar_categoria.FieldByName('Código').AsInteger, []);
+    end
+  else
+  if FRM_PESQUISAR.lbl_pesquisar.Caption = 'Pesquisar Usuário' then
+    begin
+      DM_Usuario.usuario.Locate('coduser', DM_Usuario.pesquisar_usuario.FieldByName('Código').AsInteger, []);
+    end;
+  if FRM_PESQUISAR.lbl_pesquisar.Caption = 'Pesquisar Produto' then
+    begin
+      DM_Produto.produto.Locate('codprod', DM_Produto.pesquisar_produto.FieldByName('Código').AsInteger, []);
+      DM_Produto.produto.Locate('codcateg', DM_Produto.pesquisar_produto.FieldByName('Código Categoria').AsInteger, []);
+      FRM_PRODUTO.txt_descricaocateg.Text := DM_Produto.pesquisar_produto.FieldByName('Categoria').AsString;
+    end;
+    FRM_PESQUISAR.ModalResult := mrOk;
+  end;
+end;
 
 procedure TFRM_PESQUISAR.btn_pesquisarClick(Sender: TObject);
 begin
@@ -83,26 +105,7 @@ end;
 
 procedure TFRM_PESQUISAR.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-//  if lbl_pesquisar.Caption = 'Pesquisar Categoria' then
-//    begin
-//      DM_Categoria.ds_pesquisar_categoria.DataSet.Close;
-//    end
-//  else
-//  if lbl_pesquisar.Caption = 'Pesquisar Usuário' then
-//    begin
-//      DM_Usuario.ds_pesquisar_usuario.DataSet.Close;
-//    end;
-//  if lbl_pesquisar.Caption = 'Pesquisar Produto' then
-//    begin
-//      DM_Produto.ds_pesquisar_produto.DataSet.Close;
-//    end;
-//
   tbl_pesquisar.DataSource := nil;
-end;
-
-procedure TFRM_PESQUISAR.FormCreate(Sender: TObject);
-begin
-  //ds_pesquisar.DataSet := DM_Pesquisa_Geral.pesquisar;
 end;
 
 procedure TFRM_PESQUISAR.FormShow(Sender: TObject);
@@ -114,30 +117,24 @@ end;
 
 procedure TFRM_PESQUISAR.tbl_pesquisarDblClick(Sender: TObject);
 begin
-  if lbl_pesquisar.Caption = 'Pesquisar Categoria' then
-    begin
-      DM_Categoria.categoria.Locate('codcateg', DM_Categoria.pesquisar_categoria.FieldByName('Código').AsInteger, []);
-    end
-  else
-  if lbl_pesquisar.Caption = 'Pesquisar Usuário' then
-    begin
-      DM_Usuario.usuario.Locate('coduser', DM_Usuario.pesquisar_usuario.FieldByName('Código').AsInteger, []);
-    end;
-  if lbl_pesquisar.Caption = 'Pesquisar Produto' then
-    begin
-      DM_Produto.produto.Locate('codprod', DM_Produto.pesquisar_produto.FieldByName('Código').AsInteger, []);
-      DM_Produto.produto.Locate('codcateg', DM_Produto.pesquisar_produto.FieldByName('Código Categoria').AsInteger, []);
-      FRM_PRODUTO.txt_descricaocateg.Text := DM_Produto.pesquisar_produto.FieldByName('Categoria').AsString;
-    end;
-    ModalResult := mrOk;
+  Pesquisar;
+end;
+
+procedure TFRM_PESQUISAR.tbl_pesquisarKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Pesquisar;
+    Key := #0;
+  end
 end;
 
 procedure TFRM_PESQUISAR.txt_pesquisarKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    btn_pesquisar.SetFocus;
     btn_pesquisar.Click;
+    tbl_pesquisar.SetFocus;
     Key := #0;
   end;
 end;
