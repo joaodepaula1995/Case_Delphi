@@ -229,6 +229,7 @@ procedure TFRM_PRODUTO.FormKeyDown(Sender: TObject; var Key: Word;
 begin
   if Key = VK_ESCAPE then
   Close;
+  DM_Produto.produto.Cancel;
   if Key = VK_F4 then
   begin
     btn_pesquisar.Click;
