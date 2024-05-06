@@ -221,7 +221,7 @@ end;
 
 procedure TFRM_PRODUTO.FormCreate(Sender: TObject);
 begin
-  KeyPreview := True;
+  //KeyPreview := True;
 end;
 
 procedure TFRM_PRODUTO.FormKeyDown(Sender: TObject; var Key: Word;

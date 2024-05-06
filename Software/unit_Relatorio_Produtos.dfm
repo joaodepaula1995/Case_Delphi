@@ -26,8 +26,23 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
       Left = 38
       Top = 81
       Width = 718
-      Height = 25
+      Height = 27
       BandType = btTitle
+      object lbl________: TRLLabel
+        Left = -2
+        Top = 8
+        Width = 718
+        Height = 20
+        Caption = 
+          '________________________________________________________________' +
+          '_______________________________________________________'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Microsoft New Tai Lue'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object lbl_codigo: TRLLabel
         Left = 3
         Top = -1
@@ -159,27 +174,12 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
     end
     object RLBand3: TRLBand
       Left = 38
-      Top = 106
+      Top = 108
       Width = 718
-      Height = 31
-      object lbl_______: TRLLabel
-        Left = 0
-        Top = 12
-        Width = 718
-        Height = 20
-        Caption = 
-          '________________________________________________________________' +
-          '_______________________________________________________'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Microsoft New Tai Lue'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
+      Height = 25
       object codprod: TRLDBText
         Left = 6
-        Top = 6
+        Top = 3
         Width = 48
         Height = 17
         Alignment = taCenter
@@ -195,8 +195,8 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
       end
       object nomeprod: TRLDBText
         Left = 62
-        Top = 6
-        Width = 127
+        Top = 3
+        Width = 59
         Height = 17
         DataField = 'nomeprod'
         DataSource = DM_Produto.ds_produtos_relatorio
@@ -209,14 +209,14 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         Text = ''
       end
       object preco: TRLDBText
-        Left = 291
-        Top = 6
-        Width = 58
+        Left = 316
+        Top = 3
+        Width = 33
         Height = 17
         Alignment = taRightJustify
         DataField = 'preco'
         DataSource = DM_Produto.ds_produtos_relatorio
-        DisplayMask = 'R$: ###.###,##'
+        DisplayMask = 'R$ ###.###,##'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -12
@@ -227,8 +227,8 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
       end
       object dataalterecao: TRLDBText
         Left = 450
-        Top = 6
-        Width = 129
+        Top = 3
+        Width = 74
         Height = 17
         DataField = 'dataalteracao'
         DataSource = DM_Produto.ds_produtos_relatorio
@@ -242,8 +242,8 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
       end
       object datacadastro: TRLDBText
         Left = 585
-        Top = 7
-        Width = 130
+        Top = 4
+        Width = 71
         Height = 17
         DataField = 'datacadastro'
         DataSource = DM_Produto.ds_produtos_relatorio
@@ -257,8 +257,8 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
       end
       object categoria: TRLDBText
         Left = 195
-        Top = 6
-        Width = 90
+        Top = 3
+        Width = 54
         Height = 17
         DataField = 'Categoria'
         DataSource = DM_Produto.ds_produtos_relatorio
@@ -271,14 +271,14 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
         Text = ''
       end
       object ultpreco: TRLDBText
-        Left = 355
-        Top = 6
-        Width = 91
+        Left = 399
+        Top = 3
+        Width = 47
         Height = 17
         Alignment = taRightJustify
         DataField = 'ultpreco'
         DataSource = DM_Produto.ds_produtos_relatorio
-        DisplayMask = 'R$: ###.###,##'
+        DisplayMask = 'R$ ###.###,##'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -12
@@ -290,7 +290,7 @@ object FRM_RELATORIO_PRODUTOS: TFRM_RELATORIO_PRODUTOS
     end
     object RLBand4: TRLBand
       Left = 38
-      Top = 137
+      Top = 133
       Width = 718
       Height = 32
       BandType = btFooter
