@@ -18,6 +18,8 @@ type
     ds_categoria: TDataSource;
     pesquisar_categoria: TFDQuery;
     ds_pesquisar_categoria: TDataSource;
+    pesquisa_produto_vinculado: TFDQuery;
+    ds_pesquisa_produto_vinculado: TDataSource;
   private
     { Private declarations }
   public

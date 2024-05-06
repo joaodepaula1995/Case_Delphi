@@ -42,4 +42,14 @@ object DM_Categoria: TDM_Categoria
     Left = 184
     Top = 144
   end
+  object pesquisa_produto_vinculado: TFDQuery
+    Connection = conexao
+    Left = 72
+    Top = 216
+  end
+  object ds_pesquisa_produto_vinculado: TDataSource
+    DataSet = pesquisa_produto_vinculado
+    Left = 248
+    Top = 216
+  end
 end

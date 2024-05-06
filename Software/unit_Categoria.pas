@@ -48,6 +48,17 @@ uses
 
 procedure TFRM_CATEGORIA.btn_deletarClick(Sender: TObject);
 begin
+  DM_Categoria.pesquisa_produto_vinculado.Close;
+  DM_Categoria.pesquisa_produto_vinculado.SQL.Clear;
+  DM_Categoria.pesquisa_produto_vinculado.SQL.Add( 'SELECT '
+                                          + 'p.codprod '
+                                          + 'FROM produto p '
+                                          + 'INNER JOIN categoria c '
+                                          + 'ON p.codcateg = c.codcateg '
+                                          + 'WHERE p.codcateg = :codcateg '
+                                          + 'LIMIT 1;');
+  DM_Categoria.pesquisa_produto_vinculado.parambyname('codcateg').AsString := txt_codcateg.Text;
+  DM_Categoria.pesquisa_produto_vinculado.Open;
   if txt_codcateg.Text <= '0' then
     begin
       FRM_MENSAGEM.lbl_mensagem.Caption := 'Localize a Categoria para deletar!';
@@ -55,7 +66,14 @@ begin
       FRM_MENSAGEM.ShowModal;
       btn_pesquisar.SetFocus;
     end
-    else
+  else
+  if DM_Categoria.pesquisa_produto_vinculado.FieldByName('codprod').AsInteger <> 0 then
+    begin
+      FRM_MENSAGEM.lbl_mensagem.Caption := 'Categoria com produto vinculado!';
+      FRM_MENSAGEM.img_aviso.Visible := true;
+      FRM_MENSAGEM.ShowModal;
+    end
+  else
     begin
       try
         FRM_MENSAGEM_CONFIRMACAO.lbl_mensagem.Caption := 'Deseja realmente deletar a categoria?';
